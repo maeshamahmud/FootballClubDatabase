@@ -1,6 +1,5 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
-
 DROP TABLE IF EXISTS `Locations`;
 CREATE TABLE Locations (
     LocationID INT PRIMARY KEY AUTO_INCREMENT,
@@ -48,7 +47,7 @@ CREATE TABLE PersonnelLocations (
 DROP TABLE IF EXISTS `FamilyMembers`;
 CREATE TABLE FamilyMembers (
     FamilyMemberID INT PRIMARY KEY AUTO_INCREMENT,
-    TYPE ENUM('Father', 'Mother', 'GrandFather', 'GrandMother', 'Tutor', 'Partner', 'Friend', 'Other') NOT NULL,
+    Type ENUM('Father', 'Mother', 'GrandFather', 'GrandMother', 'Tutor', 'Partner', 'Friend', 'Other') NOT NULL,
     FirstName VARCHAR(100) NOT NULL,
     LastName VARCHAR(100) NOT NULL,
     DateOfBirth DATE NOT NULL,
@@ -91,8 +90,30 @@ CREATE TABLE ClubMembers (
     PostalCode VARCHAR(20),
     FamilyMemberID INT NOT NULL,
     LocationID INT NOT NULL,
-    FOREIGN KEY (FamilyMemberID) REFERENCES FamilyMembers(FamilyMemberID) ON UPDATE CASCADE,
-    FOREIGN KEY (LocationID) REFERENCES Locations(LocationID) ON UPDATE CASCADE
+    TeamType ENUM('Boys', 'Girls') NOT NULL,
+    Status ENUM('Active', 'Inactive') NOT NULL,
+    FOREIGN KEY (FamilyMemberID) REFERENCES FamilyMembers(FamilyMemberID),
+    FOREIGN KEY (LocationID) REFERENCES Locations(LocationID)
+);
+
+DROP TABLE IF EXISTS `Teams`;
+CREATE TABLE Teams (
+    TeamID INT PRIMARY KEY AUTO_INCREMENT,
+    TeamName VARCHAR(100) NOT NULL,
+    LocationID INT NOT NULL,
+    TeamType ENUM('Boys', 'Girls') NOT NULL,
+    FOREIGN KEY (LocationID) REFERENCES Locations(LocationID)
+);
+
+DROP TABLE IF EXISTS `ClubMemberTeams`;
+CREATE TABLE ClubMemberTeams (
+    ClubMemberTeamID INT PRIMARY KEY AUTO_INCREMENT,
+    ClubMemberID INT NOT NULL,
+    TeamID INT NOT NULL,
+    StartDate DATE NOT NULL,
+    EndDate DATE,
+    FOREIGN KEY (ClubMemberID) REFERENCES ClubMembers(ClubMemberID),
+    FOREIGN KEY (TeamID) REFERENCES Teams(TeamID)
 );
 
 SET FOREIGN_KEY_CHECKS = 1;
