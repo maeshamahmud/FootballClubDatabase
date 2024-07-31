@@ -1,0 +1,9 @@
+{
+  "client": "mysql2",
+  "connection": {
+    "host": "localhost",
+    "user": "root",
+    "password": "my-secret-pw",
+    "database": "test_db"
+  }
+}
