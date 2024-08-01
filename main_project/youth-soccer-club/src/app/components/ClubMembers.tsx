@@ -1,12 +1,8 @@
+import sqlConfig from "@/../mysql.json";
 import mysql2, { RowDataPacket } from "mysql2/promise";
-import { ClubMembersEntity } from "../../../Database";
+import Table from "./Table";
 
-const connection = await mysql2.createConnection({
-  host: "localhost",
-  user: "root",
-  database: "test_db",
-  password: "my-secret-pw",
-});
+const connection = await mysql2.createConnection(sqlConfig.connection);
 
 interface ClubMember extends ClubMembersEntity, RowDataPacket {}
 
@@ -21,13 +17,7 @@ export default async function ClubMembers() {
     <div>
       <h1>Club Members</h1>
       <p>Here is a list of all the club members</p>
-      <ul>
-        {members.map((member) => (
-          <li key={member.ClubMemberID}>
-            {member.FirstName} {member.LastName}
-          </li>
-        ))}
-      </ul>
+      <Table rows={members} />
     </div>
   );
 }
