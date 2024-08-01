@@ -8,11 +8,11 @@ VALUES
 
 INSERT INTO Personnel (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicalCardNumber, TelephoneNumber, Address, City, Province, PostalCode, EmailAddress, Role, Mandate, StartDate, EndDate)
 VALUES
-('Alice', 'Johnson', '1980-01-01', '123-45-6789', 'MC12345', '555-555-5555', '123 Birch St', 'Metropolis', 'State', '12345', 'alice@domain.com', 'Manager', 'Salaried', '2020-01-01', NULL),
-('Bob', 'Williams', '1985-02-02', '234-56-7890', 'MC23456', '555-555-5556', '456 Spruce St', 'Gotham', 'State', '67890', 'bob@domain.com', 'Coach', 'Volunteer', '2019-02-01', '2023-01-01'),
-('Charlie', 'Brown', '1990-03-03', '345-67-8901', 'MC34567', '555-555-5557', '789 Willow St', 'Star City', 'State', '11223', 'charlie@domain.com', 'Trainer', 'Salaried', '2021-03-01', NULL),
-('David', 'Smith', '1975-04-04', '456-78-9012', 'MC45678', '555-555-5558', '101 Fir St', 'Central City', 'State', '44556', 'david@domain.com', 'Assistant', 'Volunteer', '2020-04-01', '2022-04-01'),
-('Eva', 'Davis', '1982-05-05', '567-89-0123', 'MC56789', '555-555-5559', '202 Maple St', 'Coast City', 'State', '77889', 'eva@domain.com', 'Supervisor', 'Salaried', '2022-05-01', NULL);
+('Alice', 'Johnson', '1980-01-01', '123-45-6789', 'MC12345', '555-555-5555', '123 Birch St', 'Metropolis', 'State', '12345', 'alice@domain.com', 'GeneralManager', 'Salaried', '2020-01-01', NULL),
+('Bob', 'Williams', '1985-02-02', '234-56-7890', 'MC23456', '555-555-5556', '456 Spruce St', 'Gotham', 'State', '67890', 'bob@domain.com', 'Administrator', 'Volunteer', '2019-02-01', '2023-01-01'),
+('Charlie', 'Brown', '1990-03-03', '345-67-8901', 'MC34567', '555-555-5557', '789 Willow St', 'Star City', 'State', '11223', 'charlie@domain.com', 'Administrator', 'Salaried', '2021-03-01', NULL),
+('David', 'Smith', '1975-04-04', '456-78-9012', 'MC45678', '555-555-5558', '101 Fir St', 'Central City', 'State', '44556', 'david@domain.com', 'Other', 'Volunteer', '2020-04-01', '2022-04-01'),
+('Eva', 'Davis', '1982-05-05', '567-89-0123', 'MC56789', '555-555-5559', '202 Maple St', 'Coast City', 'State', '77889', 'eva@domain.com', 'Trainer', 'Salaried', '2022-05-01', NULL);
 
 INSERT INTO PersonnelLocations (PersonnelID, LocationID, StartDate, EndDate)
 VALUES
