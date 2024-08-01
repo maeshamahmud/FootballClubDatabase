@@ -14,7 +14,7 @@ CREATE TABLE Location (
     WebAddress VARCHAR(255),
     Type ENUM('Head', 'Branch'),
     Capacity INT,
-    GeneralManager VARCHAR(255)
+    Personnels VARCHAR(255)
 );
 
 DROP TABLE IF EXISTS Personnel;
@@ -43,7 +43,7 @@ CREATE TABLE PersonnelLocations (
     LocationID INT,
     StartDate DATE,
     EndDate DATE,
-    PRIMARY KEY (PersonnelID, LocationID, StartDate),
+    PRIMARY KEY (PersonnelID, LocationID),
     FOREIGN KEY (PersonnelID) REFERENCES Personnel(PersonnelID),
     FOREIGN KEY (LocationID) REFERENCES Location(LocationID)
 );
@@ -76,6 +76,25 @@ CREATE TABLE SecondaryFamilyMember (
     FOREIGN KEY (FamilyMemberID) REFERENCES FamilyMember(FamilyMemberID)
 );
 
+DROP TABLE IF EXISTS ClubMembers;
+CREATE TABLE ClubMembers (
+    ClubMemberID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(255),
+    LastName VARCHAR(255),
+    DateOfBirth DATE,
+    SocialSecurityNumber VARCHAR(20) UNIQUE NOT NULL,
+    MedicalCardNumber VARCHAR(20) UNIQUE NOT NULL,
+    TelephoneNumber VARCHAR(20),
+    Address VARCHAR(255),
+    City VARCHAR(100),
+    Province VARCHAR(100),
+    PostalCode VARCHAR(20),
+    TeamType VARCHAR(50),
+    Status ENUM('Active', 'Inactive'),
+    Role ENUM('GoalKeeper','Defender','Midfielder','Forward'),
+    ClubMembershipNumber VARCHAR(255) UNIQUE NOT NULL
+);
+
 DROP TABLE IF EXISTS SecondaryFamilyRelated;
 CREATE TABLE SecondaryFamilyRelated (
     Relationship VARCHAR(255),
@@ -106,25 +125,6 @@ CREATE TABLE FamilyMemberLocations (
     PRIMARY KEY (FamilyMemberID, LocationID),
     FOREIGN KEY (FamilyMemberID) REFERENCES FamilyMember(FamilyMemberID),
     FOREIGN KEY (LocationID) REFERENCES Location(LocationID)
-);
-
-DROP TABLE IF EXISTS ClubMembers;
-CREATE TABLE ClubMembers (
-    ClubMemberID INT AUTO_INCREMENT PRIMARY KEY,
-    FirstName VARCHAR(255),
-    LastName VARCHAR(255),
-    DateOfBirth DATE,
-    SocialSecurityNumber VARCHAR(20) UNIQUE NOT NULL,
-    MedicalCardNumber VARCHAR(20) UNIQUE NOT NULL,
-    TelephoneNumber VARCHAR(20),
-    Address VARCHAR(255),
-    City VARCHAR(100),
-    Province VARCHAR(100),
-    PostalCode VARCHAR(20),
-    TeamType VARCHAR(50),
-    Status ENUM('Active', 'Inactive'),
-    Role ENUM('GoalKeeper','Defender','Midfielder','Forward'),
-    ClubMembershipNumber VARCHAR(255) UNIQUE NOT NULL
 );
 
 DROP TABLE IF EXISTS Teams;
