@@ -1,16 +1,16 @@
-INSERT INTO Locations (Name, Address, City, Province, PostalCode, PhoneNumber, WebAddress, Type, Capacity, GeneralManagerName) VALUES
-('Head Office', '123 Main St', 'Toronto', 'Ontario', 'M1K 1M1', '416-123-4567', 'www.headlocation.com', 'Head', 100, 'John Doe'),
-('Branch A', '456 Maple Ave', 'Toronto', 'Ontario', 'M1K 2M2', '416-234-5678', 'www.branchA.com', 'Branch', 80, 'Jane Smith'),
-('Branch B', '789 Oak St', 'Montreal', 'Quebec', 'H1K 3K3', '514-345-6789', 'www.branchB.com', 'Branch', 70, 'James Brown'),
-('Branch C', '321 Pine Rd', 'Vancouver', 'British Columbia', 'V5K 4K4', '604-456-7890', 'www.branchC.com', 'Branch', 90, 'Emily Davis'),
-('Branch D', '654 Cedar Ln', 'Calgary', 'Alberta', 'T2K 5K5', '403-567-8901', 'www.branchD.com', 'Branch', 85, 'Michael Wilson'),
-('Branch E', '987 Birch Blvd', 'Edmonton', 'Alberta', 'T5K 6K6', '780-678-9012', 'www.branchE.com', 'Branch', 75, 'Sarah Johnson'),
-('Branch F', '213 Elm St', 'Halifax', 'Nova Scotia', 'B3K 7K7', '902-789-0123', 'www.branchF.com', 'Branch', 60, 'David Lee'),
-('Branch G', '432 Willow Dr', 'Winnipeg', 'Manitoba', 'R3K 8K8', '204-890-1234', 'www.branchG.com', 'Branch', 65, 'Laura King'),
-('Branch H', '654 Spruce Ct', 'Victoria', 'British Columbia', 'V8K 9K9', '250-901-2345', 'www.branchH.com', 'Branch', 55, 'Robert Taylor'),
-('Branch I', '876 Fir St', 'Regina', 'Saskatchewan', 'S4K 0K0', '306-012-3456', 'www.branchI.com', 'Branch', 50, 'Patricia White');
+INSERT INTO Locations (Name, Address, City, Province, PostalCode, PhoneNumber, WebAddress, Type, Capacity) VALUES
+('Head Office', '123 Main St', 'Toronto', 'Ontario', 'M1K 1M1', '416-123-4567', 'www.headlocation.com', 'Head', 100),
+('Branch A', '456 Maple Ave', 'Toronto', 'Ontario', 'M1K 2M2', '416-234-5678', 'www.branchA.com', 'Branch', 80),
+('Branch B', '789 Oak St', 'Montreal', 'Quebec', 'H1K 3K3', '514-345-6789', 'www.branchB.com', 'Branch', 70),
+('Branch C', '321 Pine Rd', 'Vancouver', 'British Columbia', 'V5K 4K4', '604-456-7890', 'www.branchC.com', 'Branch', 90),
+('Branch D', '654 Cedar Ln', 'Calgary', 'Alberta', 'T2K 5K5', '403-567-8901', 'www.branchD.com', 'Branch', 85),
+('Branch E', '987 Birch Blvd', 'Edmonton', 'Alberta', 'T5K 6K6', '780-678-9012', 'www.branchE.com', 'Branch', 75),
+('Branch F', '213 Elm St', 'Halifax', 'Nova Scotia', 'B3K 7K7', '902-789-0123', 'www.branchF.com', 'Branch', 60),
+('Branch G', '432 Willow Dr', 'Winnipeg', 'Manitoba', 'R3K 8K8', '204-890-1234', 'www.branchG.com', 'Branch', 65),
+('Branch H', '654 Spruce Ct', 'Victoria', 'British Columbia', 'V8K 9K9', '250-901-2345', 'www.branchH.com', 'Branch', 55),
+('Branch I', '876 Fir St', 'Regina', 'Saskatchewan', 'S4K 0K0', '306-012-3456', 'www.branchI.com', 'Branch', 50);
 
-INSERT INTO Personnel (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicareCardNumber, TelephoneNumber, Address, City, Province, PostalCode, EmailAddress, Role, Mandate) VALUES
+INSERT INTO Personnels (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicareCardNumber, TelephoneNumber, Address, City, Province, PostalCode, EmailAddress, Role, Mandate) VALUES
 ('John', 'Doe', '1980-01-01', '123-45-6789', '1234567890', '416-123-4567', '123 Main St', 'Toronto', 'Ontario', 'M1K 1M1', 'john.doe@example.com', 'Administrator', 'Salaries'),
 ('Alice', 'Johnson', '1970-01-01', '111-11-1111', '1111111111', '416-111-1111', '123 Family St', 'Toronto', 'Ontario', 'M1K 1A1', 'alice.johnson@example.com', 'Trainer', 'Volunteer'),
 ('Bob', 'Williams', '1972-02-02', '222-22-2222', '2222222222', '416-222-2222', '456 Family Ave', 'Toronto', 'Ontario', 'M1K 2A2', 'bob.williams@example.com','Administrator', 'Salaries'),

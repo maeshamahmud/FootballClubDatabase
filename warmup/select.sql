@@ -1,5 +1,5 @@
 -- Q1
-SELECT Address, City, Province, PostalCode, PhoneNumber, WebAddress, Type, Capacity, GeneralManagerName, (SELECT COUNT(*) FROM ClubMembers WHERE LocationID = Locations.LocationID) AS NumberOfClubMembers
+SELECT Address, City, Province, PostalCode, PhoneNumber, WebAddress, Type, Capacity, (SELECT COUNT(*) FROM ClubMembers WHERE LocationID = Locations.LocationID) AS NumberOfClubMembers
 FROM Locations
 ORDER BY Province ASC, City ASC;
 
@@ -10,7 +10,7 @@ WHERE fm.LocationID = 2;
 
 -- Q3
 SELECT p.FirstName, p.LastName, p.DateOfBirth, p.SocialSecurityNumber, p.MedicareCardNumber, p.TelephoneNumber, p.Address, p.City, p.Province, p.PostalCode, p.EmailAddress, p.Role, p.Mandate
-FROM Personnel p
+FROM Personnels p
 JOIN PersonnelLocations pl ON p.PersonnelID = pl.PersonnelID
 WHERE pl.LocationID = 8 
 AND (pl.EndDate IS NULL OR pl.EndDate > CURDATE());
@@ -38,7 +38,7 @@ ORDER BY fl.StartDate ASC;
 SELECT DISTINCT fm.FirstName, fm.LastName, fm.TelephoneNumber
 FROM FamilyMembers fm
 JOIN ClubMembers cm ON fm.FamilyMemberID = cm.FamilyMemberID
-JOIN Personnel p ON p.SocialSecurityNumber = fm.SocialSecurityNumber
+JOIN Personnels p ON p.SocialSecurityNumber = fm.SocialSecurityNumber
 WHERE cm.Status = 'Active' AND fm.LocationID = 1;
 
 -- Q8

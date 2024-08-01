@@ -11,12 +11,11 @@ CREATE TABLE Locations (
     PhoneNumber VARCHAR(20),
     WebAddress VARCHAR(100),
     Type ENUM('Head', 'Branch') NOT NULL,
-    Capacity INT,
-    GeneralManagerName VARCHAR(100)
+    Capacity INT
 );
 
-DROP TABLE IF EXISTS `Personnel`;
-CREATE TABLE Personnel (
+DROP TABLE IF EXISTS `Personnels`;
+CREATE TABLE Personnels (
     PersonnelID INT PRIMARY KEY AUTO_INCREMENT,
     FirstName VARCHAR(100) NOT NULL,
     LastName VARCHAR(100) NOT NULL,
@@ -40,7 +39,7 @@ CREATE TABLE PersonnelLocations (
     LocationID INT NOT NULL,
     StartDate DATE NOT NULL,
     EndDate DATE,
-    FOREIGN KEY (PersonnelID) REFERENCES Personnel(PersonnelID) ON UPDATE CASCADE,
+    FOREIGN KEY (PersonnelID) REFERENCES Personnels(PersonnelID) ON UPDATE CASCADE,
     FOREIGN KEY (LocationID) REFERENCES Locations(LocationID) ON UPDATE CASCADE
 );
 
