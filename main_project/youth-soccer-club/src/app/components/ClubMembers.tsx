@@ -1,17 +1,12 @@
-import sqlConfig from "@/../mysql.json";
-import mysql2, { RowDataPacket } from "mysql2/promise";
+import { RowDataPacket } from "mysql2/promise";
+import { ClubMembersEntity } from "../../../Database";
+import { db } from "../util/db";
 import Table from "./Table";
 
-const connection = await mysql2.createConnection(sqlConfig.connection);
-
-interface ClubMember extends ClubMembersEntity, RowDataPacket {}
+interface ClubMembers extends ClubMembersEntity, RowDataPacket {}
 
 export default async function ClubMembers() {
-  const [members] = await connection.query<ClubMember[]>(
-    "SELECT * FROM ClubMembers"
-  );
-
-  console.log(members);
+  const [members] = await db.query<ClubMembers[]>("SELECT * FROM ClubMembers");
 
   return (
     <div>
