@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
--- Additional rows for the Location table
->>>>>>> 6c5146a9649ab4b3ebe0354377e95ad4e2f6baa9
+
 INSERT INTO Location (Name, Address, City, Province, PostalCode, TelephoneNumber, WebAddress, Type, Capacity, Personnel)
 VALUES
 ('Branch E', '203 Pine St', 'River City', 'State', '89012', '123-456-7895', 'www.branchE.com', 'Branch', 300, 'Ella Grey'),
@@ -28,8 +25,8 @@ VALUES
 -- Additional rows for the Personnel table
 INSERT INTO Personnel (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicalCardNumber, TelephoneNumber, Address, City, Province, PostalCode, EmailAddress, Role, Mandate, StartDate, EndDate)
 VALUES
-('Aiden', 'Turner', '1983-06-06', '678-90-1236', 'MC67891', '555-555-5580', '707 Birch St', 'Metropolis', 'State', '12346', 'aiden@domain.com', 'Other', 'Volunteer', '2018-06-06', NULL),
-('Beth', 'Morgan', '1991-07-07', '789-01-2346', 'MC78902', '555-555-5581', '808 Spruce St', 'Gotham', 'State', '67891', 'beth@domain.com', 'Other', 'Salaried', '2017-07-07', NULL),
+('Aiden', 'Turner', '1983-06-06', '678-90-1231', 'MC67895', '555-555-5580', '707 Birch St', 'Metropolis', 'State', '12346', 'aiden@domain.com', 'Other', 'Volunteer', '2018-06-06', NULL),
+('Beth', 'Morgan', '1991-07-07', '789-01-2342', 'MC78902', '555-555-5581', '808 Spruce St', 'Gotham', 'State', '67891', 'beth@domain.com', 'Other', 'Salaried', '2017-07-07', NULL),
 ('Caleb', 'Hill', '1976-08-08', '890-12-3457', 'MC89013', '555-555-5582', '909 Willow St', 'Star City', 'State', '11224', 'caleb@domain.com', 'President', 'Volunteer', '2016-08-08', '2023-08-08'),
 ('Dana', 'Wright', '1988-09-09', '901-23-4568', 'MC90124', '555-555-5583', '1010 Fir St', 'Central City', 'State', '44557', 'dana@domain.com', 'Trainer', 'Salaried', '2015-09-09', NULL),
 ('Ethan', 'Cooper', '1993-10-10', '012-34-5679', 'MC01235', '555-555-5584', '1111 Maple St', 'Coast City', 'State', '77890', 'ethan@domain.com', 'GeneralManager', 'Volunteer', '2014-10-10', '2022-10-10'),
@@ -172,13 +169,13 @@ VALUES
 -- Additional rows for the FamilyRelated table
 INSERT INTO FamilyRelated (ClubMemberID, FamilyMemberID, Relationship)
 VALUES
-<<<<<<< HEAD
-(1, 1, 'Parent'),
+
+(1, 1, 'Mother'),
 (2, 2, 'Tutor'),
 (3, 3, 'Mother'),
 (4, 4, 'Father'),
-(5, 5, 'Friend');
-=======
+(5, 5, 'Friend'),
+
 (6, 6, 'Father'),
 (7, 7, 'Other'),
 (8, 8, 'Tutor'),
@@ -199,7 +196,6 @@ VALUES
 (3, 8, 'Tutor'),
 (4, 9, 'GrandMother'),
 (5, 10, 'Friend');
->>>>>>> 6c5146a9649ab4b3ebe0354377e95ad4e2f6baa9
 
 -- Additional rows for the FamilyMemberLocations table
 INSERT INTO FamilyMemberLocations (FamilyMemberID, LocationID, StartDate, EndDate)
