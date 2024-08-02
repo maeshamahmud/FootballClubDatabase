@@ -40,6 +40,10 @@ export default function Table({
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
+  if (rows.length === 0) {
+    return <div>No rows found.</div>;
+  }
+
   return (
     <div className="flex flex-col items-center gap-4">
       <form ref={formRef}>
@@ -186,8 +190,14 @@ export default function Table({
       </form>
 
       {errorMessage && (
-        <div className="w-3/4 rounded-lg bg-red-crayola p-4 text-sm text-white">
-          {errorMessage}
+        <div className="flex w-3/4 items-center gap-2 rounded-lg bg-red-crayola p-4 text-sm text-white">
+          <span>{errorMessage}</span>
+          <button
+            className="aspect-square min-w-[32px] rounded-lg bg-night/50 text-white"
+            onClick={() => setErrorMessage(null)}
+          >
+            X
+          </button>
         </div>
       )}
     </div>
