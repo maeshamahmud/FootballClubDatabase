@@ -249,6 +249,7 @@ VALUES
 INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
 VALUES
 (6,'2018-06-06', NULL, 6),
+(6,'2018-06-06', NULL, 7),
 (7,'2017-07-07', NULL, 7),
 (8,'2016-08-08', '2023-08-08', 8),
 (9,'2015-09-09', NULL, 9),
