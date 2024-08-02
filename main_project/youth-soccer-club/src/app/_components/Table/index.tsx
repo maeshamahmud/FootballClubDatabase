@@ -45,7 +45,11 @@ export default function Table({
     return (
       <div className="flex flex-col items-center gap-4">
         <table className="min-w-full overflow-hidden rounded-md border border-gray-300 border-x-gray-300/20 bg-verdigris/15 shadow-md shadow-verdigris/50">
-          <div className="p-4">No rows found for {tableName}</div>
+          <tbody>
+            <tr>
+              <td className="p-4">No rows found for {tableName}</td>
+            </tr>
+          </tbody>
         </table>
       </div>
     );
@@ -53,6 +57,7 @@ export default function Table({
 
   return (
     <div className="flex flex-col items-center gap-4">
+      <h2 className="text-2xl font-bold text-white">{tableName}</h2>
       <form ref={formRef}>
         <table className="min-w-full overflow-hidden rounded-md border border-gray-300 border-x-gray-300/20 bg-verdigris/15 shadow-md shadow-verdigris/50">
           <thead>
