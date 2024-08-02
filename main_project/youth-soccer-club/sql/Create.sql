@@ -31,7 +31,7 @@ CREATE TABLE Personnel (
     Province VARCHAR(100),
     PostalCode VARCHAR(20),
     EmailAddress VARCHAR(255),
-    Role VARCHAR(255),
+    Role ENUM('Administrator', 'GeneralManager','Trainer', 'Other'),
     Mandate ENUM('Volunteer', 'Salaried'),
     StartDate DATE,
     EndDate DATE
@@ -89,7 +89,7 @@ CREATE TABLE ClubMembers (
     City VARCHAR(100),
     Province VARCHAR(100),
     PostalCode VARCHAR(20),
-    TeamType VARCHAR(50),
+    TeamType ENUM('Girls, Boys'),
     Status ENUM('Active', 'Inactive'),
     Role ENUM('GoalKeeper','Defender','Midfielder','Forward'),
     ClubMembershipNumber VARCHAR(255) UNIQUE NOT NULL
@@ -109,8 +109,6 @@ CREATE TABLE FamilyRelated (
     ClubMemberID INT,
     FamilyMemberID INT,
     Relationship VARCHAR(50),
-    StartDate DATE,
-    EndDate DATE,
     PRIMARY KEY (ClubMemberID, FamilyMemberID),
     FOREIGN KEY (ClubMemberID) REFERENCES ClubMembers(ClubMemberID),
     FOREIGN KEY (FamilyMemberID) REFERENCES FamilyMember(FamilyMemberID)

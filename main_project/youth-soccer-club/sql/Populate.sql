@@ -8,11 +8,11 @@ VALUES
 
 INSERT INTO Personnel (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicalCardNumber, TelephoneNumber, Address, City, Province, PostalCode, EmailAddress, Role, Mandate, StartDate, EndDate)
 VALUES
-('Alice', 'Johnson', '1980-01-01', '123-45-6789', 'MC12345', '555-555-5555', '123 Birch St', 'Metropolis', 'State', '12345', 'alice@domain.com', 'Manager', 'Salaried', '2020-01-01', NULL),
-('Bob', 'Williams', '1985-02-02', '234-56-7890', 'MC23456', '555-555-5556', '456 Spruce St', 'Gotham', 'State', '67890', 'bob@domain.com', 'Coach', 'Volunteer', '2019-02-01', '2023-01-01'),
-('Charlie', 'Brown', '1990-03-03', '345-67-8901', 'MC34567', '555-555-5557', '789 Willow St', 'Star City', 'State', '11223', 'charlie@domain.com', 'Trainer', 'Salaried', '2021-03-01', NULL),
-('David', 'Smith', '1975-04-04', '456-78-9012', 'MC45678', '555-555-5558', '101 Fir St', 'Central City', 'State', '44556', 'david@domain.com', 'Assistant', 'Volunteer', '2020-04-01', '2022-04-01'),
-('Eva', 'Davis', '1982-05-05', '567-89-0123', 'MC56789', '555-555-5559', '202 Maple St', 'Coast City', 'State', '77889', 'eva@domain.com', 'Supervisor', 'Salaried', '2022-05-01', NULL);
+('Alice', 'Johnson', '1980-01-01', '123-45-6789', 'MC12345', '555-555-5555', '123 Birch St', 'Metropolis', 'State', '12345', 'alice@domain.com', 'GeneralManager', 'Salaried', '2020-01-01', NULL),
+('Bob', 'Williams', '1985-02-02', '234-56-7890', 'MC23456', '555-555-5556', '456 Spruce St', 'Gotham', 'State', '67890', 'bob@domain.com', 'Administrator', 'Volunteer', '2019-02-01', '2023-01-01'),
+('Charlie', 'Brown', '1990-03-03', '345-67-8901', 'MC34567', '555-555-5557', '789 Willow St', 'Star City', 'State', '11223', 'charlie@domain.com', 'Administrator', 'Salaried', '2021-03-01', NULL),
+('David', 'Smith', '1975-04-04', '456-78-9012', 'MC45678', '555-555-5558', '101 Fir St', 'Central City', 'State', '44556', 'david@domain.com', 'Other', 'Volunteer', '2020-04-01', '2022-04-01'),
+('Eva', 'Davis', '1982-05-05', '567-89-0123', 'MC56789', '555-555-5559', '202 Maple St', 'Coast City', 'State', '77889', 'eva@domain.com', 'Trainer', 'Salaried', '2022-05-01', NULL);
 
 INSERT INTO PersonnelLocations (PersonnelID, LocationID, StartDate, EndDate)
 VALUES
@@ -40,11 +40,16 @@ VALUES
 
 INSERT INTO ClubMembers (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicalCardNumber, TelephoneNumber, Address, City, Province, PostalCode, TeamType, Status, Role, ClubMembershipNumber)
 VALUES
-('Adam', 'Johnson', '2000-01-01', '234-56-7891', 'MC23456', '555-555-5570', '808 Birch St', 'Metropolis', 'State', '12345', 'Junior', 'Active', 'GoalKeeper', 'CMN12345'),
-('Brian', 'Williams', '1995-02-02', '345-67-8902', 'MC34567', '555-555-5571', '909 Spruce St', 'Gotham', 'State', '67890', 'Senior', 'Inactive', 'Defender', 'CMN23456'),
-('Chris', 'Brown', '2002-03-03', '456-78-9013', 'MC45678', '555-555-5572', '1010 Willow St', 'Star City', 'State', '11223', 'Junior', 'Active', 'Midfielder', 'CMN34567'),
-('Daniel', 'Smith', '1998-04-04', '567-89-0124', 'MC56789', '555-555-5573', '1111 Fir St', 'Central City', 'State', '44556', 'Senior', 'Inactive', 'Forward', 'CMN45678'),
-('Evan', 'Davis', '2001-05-05', '678-90-1235', 'MC67890', '555-555-5574', '1212 Maple St', 'Coast City', 'State', '77889', 'Junior', 'Active', 'GoalKeeper', 'CMN56789');
+('Adam', 'Johnson', '2000-01-01', '234-56-7891', 'MC23456', '555-555-5570', '808 Birch St', 'Metropolis', 'Quebec', '12345', 'Boys', 'Active', 'GoalKeeper', 'CMN12345'),
+('Brian', 'Williams', '1995-02-02', '345-67-8902', 'MC34567', '555-555-5571', '909 Spruce St', 'Gotham', 'Ontario', '67890', 'Boys', 'Inactive', 'Defender', 'CMN23456'),
+('Chris', 'Brown', '2002-03-03', '456-78-9013', 'MC45678', '555-555-5572', '1010 Willow St', 'Star City', 'Alberta', '11223', 'Boys', 'Active', 'Midfielder', 'CMN34567'),
+('Daniel', 'Smith', '1998-04-04', '567-89-0124', 'MC56789', '555-555-5573', '1111 Fir St', 'Central City', 'Quebec', '44556', 'Boys', 'Inactive', 'Forward', 'CMN45678'),
+('Evan', 'Davis', '2001-05-05', '678-90-1235', 'MC67890', '555-555-5574', '1212 Maple St', 'Coast City', 'Ontario', '77889', 'Boys', 'Active', 'GoalKeeper', 'CMN56789')
+('Emily', 'Taylor', '2003-06-06', '789-01-2345', 'MC78901', '555-555-5575', '1313 Oak St', 'Toronto', 'Ontario', 'M5H 2N2', 'Girls', 'Active', 'GoalKeeper', 'CMN67890'),
+('Fiona', 'Martinez', '1997-07-07', '890-12-3456', 'MC89012', '555-555-5576', '1414 Pine St', 'Vancouver', 'British Columbia', 'V6B 1A1', 'Girls', 'Inactive', 'Defender', 'CMN78901'),
+('Grace', 'Lopez', '2004-08-08', '901-23-4567', 'MC90123', '555-555-5577', '1515 Cedar St', 'Montreal', 'Quebec', 'H3B 3A7', 'Girls', 'Active', 'Midfielder', 'CMN89012'),
+('Hannah', 'Clark', '1999-09-09', '012-34-5678', 'MC01234', '555-555-5578', '1616 Elm St', 'Calgary', 'Alberta', 'T2P 2M5', 'Girls', 'Inactive', 'Forward', 'CMN90123'),
+('Isabella', 'Lewis', '2002-10-10', '123-45-6789', 'MC12345', '555-555-5579', '1717 Walnut St', 'Ottawa', 'Ontario', 'K1P 1A4', 'Girls', 'Active', 'GoalKeeper', 'CMN01234');
 
 INSERT INTO SecondaryFamilyRelated (Relationship, SecondaryFamilyMemberID, ClubMemberID)
 VALUES
