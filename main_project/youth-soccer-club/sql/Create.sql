@@ -14,7 +14,7 @@ CREATE TABLE Location (
     WebAddress VARCHAR(255),
     Type ENUM('Head', 'Branch'),
     Capacity INT,
-    Personnels VARCHAR(255)
+    Personnel VARCHAR(255)
 );
 
 DROP TABLE IF EXISTS Personnel;
@@ -31,7 +31,7 @@ CREATE TABLE Personnel (
     Province VARCHAR(100),
     PostalCode VARCHAR(20),
     EmailAddress VARCHAR(255),
-    Role ENUM('Administrator', 'GeneralManager','Trainer', 'Other'),
+    Role ENUM('President', 'Administrator', 'GeneralManager','Trainer', 'Other'),
     Mandate ENUM('Volunteer', 'Salaried'),
     StartDate DATE,
     EndDate DATE
@@ -97,7 +97,7 @@ CREATE TABLE ClubMembers (
 
 DROP TABLE IF EXISTS SecondaryFamilyRelated;
 CREATE TABLE SecondaryFamilyRelated (
-    Relationship VARCHAR(255),
+    Relationship Enum('Father', 'Mother', 'GrandFather', 'GrandMother', 'Tutor', 'Partner', 'Friend', 'Other'),
     SecondaryFamilyMemberID INT,
     ClubMemberID INT,
     FOREIGN KEY (SecondaryFamilyMemberID) REFERENCES SecondaryFamilyMember(SecondaryFamilyMemberID),
@@ -108,7 +108,7 @@ DROP TABLE IF EXISTS FamilyRelated;
 CREATE TABLE FamilyRelated (
     ClubMemberID INT,
     FamilyMemberID INT,
-    Relationship VARCHAR(50),
+    Relationship Enum('Father', 'Mother', 'GrandFather', 'GrandMother', 'Tutor', 'Partner', 'Friend', 'Other'),
     PRIMARY KEY (ClubMemberID, FamilyMemberID),
     FOREIGN KEY (ClubMemberID) REFERENCES ClubMembers(ClubMemberID),
     FOREIGN KEY (FamilyMemberID) REFERENCES FamilyMember(FamilyMemberID)
@@ -130,7 +130,7 @@ CREATE TABLE Teams (
     TeamID INT AUTO_INCREMENT PRIMARY KEY,
     TeamName VARCHAR(255),
     LocationID INT,
-    TeamType VARCHAR(50),
+    TeamType ENUM('Boys','Girls'),
     HeadCoach VARCHAR(255),
     FOREIGN KEY (LocationID) REFERENCES Location(LocationID)
 );
@@ -160,7 +160,7 @@ CREATE TABLE ClubMemberLocations (
 DROP TABLE IF EXISTS Sessions;
 CREATE TABLE Sessions (
     SessionID INT AUTO_INCREMENT PRIMARY KEY,
-    TypeOfSession VARCHAR(50),
+    TypeOfSession ENUM('Training', 'Game'),
     LocationID INT,
     FOREIGN KEY (LocationID) REFERENCES Location(LocationID)
 );
@@ -172,5 +172,6 @@ CREATE TABLE TeamFormation (
     Time TIME,
     Date DATE,
     Score INT,
-    TeamType VARCHAR(50)
+    TeamType ENUM('Boys','Girls')
+    TeamType ENUM('Boys','Girls')
 );
