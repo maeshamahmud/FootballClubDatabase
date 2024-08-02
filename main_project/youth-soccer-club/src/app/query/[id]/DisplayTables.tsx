@@ -1,4 +1,4 @@
-import { getTables } from "@/app/_actions/getTables";
+import { getTables } from "@/app/_actions/query1-6/display";
 import Table from "@/app/_components/Table";
 
 export default function DisplayTables({
@@ -8,12 +8,16 @@ export default function DisplayTables({
 }) {
   const [tables, tableNames] = tableData;
 
-  return tables.map((table, index) => (
-    <Table
-      key={index}
-      tableName={tableNames[index]}
-      rows={table}
-      showActions={true}
-    />
-  ));
+  return (
+    <div className="flex flex-col items-center justify-center gap-6">
+      {tables.map((table, index) => (
+        <Table
+          key={index}
+          tableName={tableNames[index]}
+          rows={table}
+          showActions={true}
+        />
+      ))}
+    </div>
+  );
 }

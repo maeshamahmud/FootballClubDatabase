@@ -2,7 +2,7 @@
 
 import { readFileSync } from "fs";
 import { RowDataPacket } from "mysql2";
-import { getDb } from "../_util/db";
+import { getDb } from "../../_util/db";
 
 const selectTablesSql = readFileSync("./sql/Display.sql", "utf8");
 

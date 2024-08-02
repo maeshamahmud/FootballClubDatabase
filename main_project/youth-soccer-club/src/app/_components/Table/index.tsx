@@ -2,6 +2,7 @@
 
 import { deleteRow, editRow } from "@/app/_actions/tableOps";
 import React, { useReducer, useRef, useState } from "react";
+import ErrorMessage from "../ErrorMessage";
 
 type FieldData = string | number | Date | null;
 type Row = Record<string, FieldData>;
@@ -196,15 +197,10 @@ export default function Table({
       </form>
 
       {errorMessage && (
-        <div className="flex w-3/4 items-center gap-2 rounded-lg bg-red-crayola p-4 text-sm text-white">
-          <span>{errorMessage}</span>
-          <button
-            className="aspect-square min-w-[32px] rounded-lg bg-night/50 text-white"
-            onClick={() => setErrorMessage(null)}
-          >
-            X
-          </button>
-        </div>
+        <ErrorMessage
+          message={errorMessage}
+          onClose={() => setErrorMessage(null)}
+        />
       )}
     </div>
   );
