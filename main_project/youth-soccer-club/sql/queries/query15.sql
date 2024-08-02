@@ -2,15 +2,13 @@ SELECT
     fm.FirstName AS first_name,
     fm.LastName AS last_name,
     fm.TelephoneNumber AS phone_number
-FROM FamilyMembers fm
-JOIN ClubMembers cm ON fm.FamilyMemberID = cm.FamilyMemberID
-JOIN MemberLocations ml ON cm.ClubMemberID = ml.ClubMemberID
-JOIN TeamFormations tf ON ml.LocationID = tf.LocationID
-JOIN Personnel p ON tf.CoachID = p.PersonnelID
-WHERE
-    cm.Status = 'active'
-    AND p.Role = 'head coach'
-    AND fm.FamilyMemberID = p.FamilyMemberID
-    AND ml.LocationID = ?
+FROM FamilyMember fm
+JOIN FamilyRelated fr ON fm.FamilyMemberID = fr.FamilyMemberID
+JOIN ClubMembers cm ON fr.ClubMemberID = cm.ClubMemberID
+JOIN ClubMemberLocations cml ON cm.ClubMemberID = cml.ClubMemberID
+JOIN Teams t ON cml.LocationID = t.LocationID
+WHERE cm.Status = 'Active'
+    AND t.HeadCoach = fm.FamilyMemberID
+    AND cml.LocationID = ? -- Replace with the specific location ID
 GROUP BY fm.FirstName, fm.LastName, fm.TelephoneNumber
 ORDER BY fm.LastName, fm.FirstName;
