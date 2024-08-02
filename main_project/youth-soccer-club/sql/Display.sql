@@ -1,4 +1,15 @@
-SELECT Address, City, Province, PostalCode, TelephoneNumber, WebAddress, Type, Capacity, Personnels,
-(SELECT COUNT(*) FROM ClubMembers WHERE LocationID = Location.LocationID) AS NumberOfClubMembers
-FROM Location
-ORDER BY Province ASC, City ASC;
+SELECT * FROM Location;
+SELECT * FROM Personnel;
+SELECT * FROM PersonnelLocations;
+SELECT * FROM FamilyMember;
+SELECT * FROM SecondaryFamilyMember;
+SELECT * FROM ClubMembers;
+SELECT * FROM SecondaryFamilyRelated;
+SELECT * FROM FamilyRelated;
+SELECT * FROM FamilyMemberLocations;
+SELECT * FROM Teams;
+SELECT * FROM ClubMemberTeams;
+SELECT * FROM ClubMemberLocations;
+SELECT * FROM Sessions;
+SELECT * FROM TeamFormation;
+SELECT * FROM EmailLogs;
