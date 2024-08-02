@@ -1,11 +1,12 @@
 import { RowDataPacket } from "mysql2/promise";
-import Link from "next/link";
-import { db } from "../util/db";
+import { connection } from "../_util/db";
 import Table from "./Table";
+import TableLink from "./Table/TableLink";
 
 interface Table extends RowDataPacket {}
 
 export default async function Main() {
+  const db = await connection;
   const [tables] = await db.execute<Table[]>("SHOW TABLES");
 
   return (
@@ -14,14 +15,7 @@ export default async function Main() {
       <p>Here is a list of all Tables in the database.</p>
       <p>Click on a table name to view it.</p>
       <br />
-      <Table
-        rows={tables}
-        customCell={(value) => (
-          <Link href={`/table/${value}`} className="hover:underline">
-            {value}
-          </Link>
-        )}
-      />
+      <TableLink tableName={Object.keys(tables)[0]} tables={tables} />
     </div>
   );
 }

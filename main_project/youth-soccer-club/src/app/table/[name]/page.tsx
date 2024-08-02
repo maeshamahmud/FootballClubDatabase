@@ -1,5 +1,6 @@
-import Table from "@/app/components/Table";
-import { db } from "@/app/util/db";
+import Table from "@/app/_components/Table";
+import { connection } from "@/app/_util/db";
+import { writeFileSync } from "fs";
 import { RowDataPacket } from "mysql2";
 
 interface Row extends RowDataPacket {}
@@ -9,13 +10,16 @@ export default async function TablePage({
 }: {
   params: { name: string };
 }) {
-  const [rows] = await db.query<Row[]>(
+  const db = await connection;
+  const [rows, fieldPackets] = await db.execute<Row[]>(
     `SELECT * FROM ${params.name} LIMIT 100`
   );
 
+  writeFileSync(`./${params.name}.json`, JSON.stringify(fieldPackets));
+
   return (
     <div>
-      <Table rows={rows} showActions />
+      <Table tableName={params.name} rows={rows} showActions />
     </div>
   );
 }
