@@ -15,7 +15,7 @@ SELECT
 FROM
     Location l
 LEFT JOIN
-    Personnel p ON l.Personnels = p.PersonnelID
+    Personnel p ON l.Personnel = p.PersonnelID
 ORDER BY
     l.Province ASC,
     l.City ASC;

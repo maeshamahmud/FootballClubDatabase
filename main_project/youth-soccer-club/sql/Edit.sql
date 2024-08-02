@@ -8,7 +8,7 @@ SET Name = 'Main Office',
     WebAddress = 'www.mainoffice.com',
     Type = 'Head',
     Capacity = 600,
-    GeneralManager = 'John Doe Updated'
+    Personnel = 'John Doe Updated'
 WHERE LocationID = 1;
 
 UPDATE Personnel
@@ -62,8 +62,7 @@ SET Relationship = 'Updated Parent',
 WHERE SecondaryFamilyMemberID = 1 AND ClubMemberID = 1;
 
 UPDATE FamilyRelated
-SET Relationship = 'Updated Parent',
-    EndDate = '2023-12-31'
+SET Relationship = 'Updated Parent'
 WHERE ClubMemberID = 1 AND FamilyMemberID = 1;
 
 UPDATE FamilyMemberLocations

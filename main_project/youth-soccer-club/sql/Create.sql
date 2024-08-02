@@ -173,5 +173,14 @@ CREATE TABLE TeamFormation (
     Date DATE,
     Score INT,
     TeamType ENUM('Boys','Girls')
-    TeamType ENUM('Boys','Girls')
+);
+
+DROP TABLE IF EXISTS EmailLogs;
+CREATE TABLE EmailLogs (
+    EmailLogID INT AUTO_INCREMENT PRIMARY KEY,
+    Date DATE,
+    LocationIDSender INT,
+    EmailReceiver VARCHAR(255),
+    EmailSubject VARCHAR(255),
+    EmailBody VARCHAR(255)
 );
