@@ -1,9 +1,5 @@
-import ClubMembers from "./components/ClubMembers";
+import Main from "./components/Main";
 
 export default function Home() {
-  return (
-    <div>
-      <ClubMembers />
-    </div>
-  );
+  return <Main />;
 }
