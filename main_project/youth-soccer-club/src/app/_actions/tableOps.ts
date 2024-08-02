@@ -30,9 +30,9 @@ export async function editRow(
     console.log("\n\nExecuting query:\n", q.text, q.values, "\n\n");
 
     await db.query(q.sql, q.values);
-  } catch (e) {
+  } catch (e: any) {
     console.error(e);
-    return { status: false };
+    return { status: false, message: e.sqlMessage };
   }
 
   return { status: true };
@@ -55,9 +55,9 @@ export async function deleteRow(
     console.log("\n\nExecuting query:\n", q.text, q.values, "\n\n");
 
     await db.query(q.sql, q.values);
-  } catch (e) {
+  } catch (e: any) {
     console.error(e);
-    return { status: false };
+    return { status: false, message: e.sqlMessage };
   }
 
   return { status: true };
