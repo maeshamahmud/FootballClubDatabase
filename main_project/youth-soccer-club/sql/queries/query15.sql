@@ -11,6 +11,6 @@ WHERE
     cm.Status = 'active'
     AND p.Role = 'head coach'
     AND fm.FamilyMemberID = p.FamilyMemberID
-    AND ml.LocationID = ? -- Replace with the specific location ID
+    AND ml.LocationID = ?
 GROUP BY fm.FirstName, fm.LastName, fm.TelephoneNumber
 ORDER BY fm.LastName, fm.FirstName;
