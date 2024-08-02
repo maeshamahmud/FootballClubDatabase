@@ -173,5 +173,4 @@ CREATE TABLE TeamFormation (
     Date DATE,
     Score INT,
     TeamType ENUM('Boys','Girls')
-    TeamType ENUM('Boys','Girls')
 );

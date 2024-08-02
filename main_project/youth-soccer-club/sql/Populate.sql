@@ -1,4 +1,4 @@
-INSERT INTO Location (Name, Address, City, Province, PostalCode, TelephoneNumber, WebAddress, Type, Capacity, Personnels)
+INSERT INTO Location (Name, Address, City, Province, PostalCode, TelephoneNumber, WebAddress, Type, Capacity, Personnel)
 VALUES
 ('Head Office', '123 Main St', 'Metropolis', 'State', '12345', '123-456-7890', 'www.headoffice.com', 'Head', 500, 'John Doe'),
 ('Branch A', '456 Elm St', 'Gotham', 'State', '67890', '123-456-7891', 'www.branchA.com', 'Branch', 300, 'Jane Smith'),
@@ -61,10 +61,10 @@ VALUES
 
 INSERT INTO FamilyRelated (ClubMemberID, FamilyMemberID, Relationship)
 VALUES
-(1, 1, 'Parent'),
-(2, 2, 'Sibling'),
-(3, 3, 'Cousin'),
-(4, 4, 'Guardian'),
+(1, 1, 'Father'),
+(2, 2, 'Other'),
+(3, 3, 'Partner'),
+(4, 4, 'Tutor'),
 (5, 5, 'Friend');
 
 INSERT INTO FamilyMemberLocations (FamilyMemberID, LocationID, StartDate, EndDate)
@@ -77,11 +77,11 @@ VALUES
 
 INSERT INTO Teams (TeamName, LocationID, TeamType, HeadCoach)
 VALUES
-('Team A', 1, 'Junior', 'Alice Johnson'),
-('Team B', 2, 'Senior', 'Bob Williams'),
-('Team C', 3, 'Junior', 'Charlie Brown'),
-('Team D', 4, 'Senior', 'David Smith'),
-('Team E', 5, 'Junior', 'Eva Davis');
+('Team A', 1, 'Girls', 'Alice Johnson'),
+('Team B', 2, 'Boys', 'Bob Williams'),
+('Team C', 3, 'Boys', 'Charlie Brown'),
+('Team D', 4, 'Boys', 'David Smith'),
+('Team E', 5, 'Girls', 'Eva Davis');
 
 INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
 VALUES
@@ -102,15 +102,15 @@ VALUES
 INSERT INTO Sessions (TypeOfSession, LocationID)
 VALUES
 ('Training', 1),
-('Match', 2),
-('Friendly', 3),
-('Workshop', 4),
-('Seminar', 5);
+('Game', 2),
+('Game', 3),
+('Training', 4),
+('Training', 5);
 
 INSERT INTO TeamFormation (Time, Date, Score, TeamType)
 VALUES
-('10:00:00', '2024-01-01', 3, 'Junior'),
-('11:00:00', '2024-02-02', 2, 'Senior'),
-('12:00:00', '2024-03-03', 4, 'Junior'),
-('13:00:00', '2024-04-04', 1, 'Senior'),
-('14:00:00', '2024-05-05', 5, 'Junior');
+('10:00:00', '2024-01-01', 3, 'Girls'),
+('11:00:00', '2024-02-02', 2, 'Boys'),
+('12:00:00', '2024-03-03', 4, 'Girls'),
+('13:00:00', '2024-04-04', 1, 'Boys'),
+('14:00:00', '2024-05-05', 5, 'Girls');
