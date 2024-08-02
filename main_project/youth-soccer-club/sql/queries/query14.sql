@@ -1,33 +1,39 @@
 SELECT
-    cm.ClubMemberID AS club_membership_number,
+    cm.ClubMembershipNumber AS club_membership_number,
     cm.FirstName AS first_name,
     cm.LastName AS last_name,
     YEAR(CURDATE()) - YEAR(cm.DateOfBirth) AS age,
     cm.TelephoneNumber AS phone_number,
-    cm.EmailAddress AS email,
+    fm.EmailAddress AS email,
     l.Name AS location_name
 FROM ClubMembers cm
-JOIN MemberLocations ml ON cm.ClubMemberID = ml.ClubMemberID
-JOIN Location l ON ml.LocationID = l.LocationID
-WHERE cm.Status = 'active'
+JOIN ClubMemberLocations cml ON cm.ClubMemberID = cml.ClubMemberID
+JOIN Location l ON cml.LocationID = l.LocationID
+JOIN FamilyRelated fr ON cm.ClubMemberID = fr.ClubMemberID
+JOIN FamilyMember fm ON fr.FamilyMemberID = fm.FamilyMemberID
+WHERE cm.Status = 'Active'
     AND EXISTS (
         SELECT 1
-        FROM PlayerTeams pt
-        WHERE pt.ClubMemberID = cm.ClubMemberID
-        AND pt.Role = 'goalkeeper')
+        FROM ClubMemberTeams cmt2
+        WHERE cmt2.ClubMemberID = cm.ClubMemberID
+        AND cm.Role = 'GoalKeeper'
+    )
     AND EXISTS (
         SELECT 1
-        FROM PlayerTeams pt
-        WHERE pt.ClubMemberID = cm.ClubMemberID
-        AND pt.Role = 'defender')
+        FROM ClubMemberTeams cmt3
+        WHERE cmt3.ClubMemberID = cm.ClubMemberID
+        AND cm.Role = 'Defender'
+    )
     AND EXISTS (
         SELECT 1
-        FROM PlayerTeams pt
-        WHERE pt.ClubMemberID = cm.ClubMemberID
-        AND pt.Role = 'midfielder')
+        FROM ClubMemberTeams cmt4
+        WHERE cmt4.ClubMemberID = cm.ClubMemberID
+        AND cm.Role = 'Midfielder'
+    )
     AND EXISTS (
         SELECT 1
-        FROM PlayerTeams pt
-        WHERE pt.ClubMemberID = cm.ClubMemberID
-        AND pt.Role = 'forward')
-ORDER BY l.Name ASC, cm.ClubMemberID ASC;
+        FROM ClubMemberTeams cmt5
+        WHERE cmt5.ClubMemberID = cm.ClubMemberID
+        AND cm.Role = 'Forward'
+    )
+ORDER BY l.Name ASC, cm.ClubMembershipNumber ASC;
