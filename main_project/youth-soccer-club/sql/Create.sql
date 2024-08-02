@@ -14,7 +14,7 @@ CREATE TABLE Location (
     WebAddress VARCHAR(255),
     Type ENUM('Head', 'Branch'),
     Capacity INT,
-    Personnels VARCHAR(255)
+    Personnel VARCHAR(255)
 );
 
 DROP TABLE IF EXISTS Personnel;
