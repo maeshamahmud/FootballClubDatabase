@@ -31,7 +31,7 @@ CREATE TABLE Personnel (
     Province VARCHAR(100),
     PostalCode VARCHAR(20),
     EmailAddress VARCHAR(255),
-    Role ENUM('Administrator', 'GeneralManager','Trainer', 'Other'),
+    Role ENUM('President', 'Administrator', 'GeneralManager','Trainer', 'Other'),
     Mandate ENUM('Volunteer', 'Salaried'),
     StartDate DATE,
     EndDate DATE
