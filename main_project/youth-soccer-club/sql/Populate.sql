@@ -1,4 +1,4 @@
-INSERT INTO Location (Name, Address, City, Province, PostalCode, TelephoneNumber, WebAddress, Type, Capacity, Personnels)
+INSERT INTO Location (Name, Address, City, Province, PostalCode, TelephoneNumber, WebAddress, Type, Capacity, Personnel)
 VALUES
 ('Head Office', '123 Main St', 'Metropolis', 'State', '12345', '123-456-7890', 'www.headoffice.com', 'Head', 500, 'John Doe'),
 ('Branch A', '456 Elm St', 'Gotham', 'State', '67890', '123-456-7891', 'www.branchA.com', 'Branch', 300, 'Jane Smith'),
@@ -62,9 +62,9 @@ VALUES
 INSERT INTO FamilyRelated (ClubMemberID, FamilyMemberID, Relationship)
 VALUES
 (1, 1, 'Parent'),
-(2, 2, 'Sibling'),
-(3, 3, 'Cousin'),
-(4, 4, 'Guardian'),
+(2, 2, 'Tutor'),
+(3, 3, 'Mother'),
+(4, 4, 'Father'),
 (5, 5, 'Friend');
 
 INSERT INTO FamilyMemberLocations (FamilyMemberID, LocationID, StartDate, EndDate)
