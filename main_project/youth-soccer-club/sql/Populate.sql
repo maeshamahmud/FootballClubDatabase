@@ -102,10 +102,10 @@ VALUES
 INSERT INTO Sessions (TypeOfSession, LocationID)
 VALUES
 ('Training', 1),
-('Match', 2),
-('Friendly', 3),
-('Workshop', 4),
-('Seminar', 5);
+('Game', 2),
+('Training', 3),
+('Game', 4),
+('Training', 5);
 
 INSERT INTO TeamFormation (Time, Date, Score, TeamType)
 VALUES

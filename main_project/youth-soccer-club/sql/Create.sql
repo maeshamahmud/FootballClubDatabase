@@ -160,7 +160,7 @@ CREATE TABLE ClubMemberLocations (
 DROP TABLE IF EXISTS Sessions;
 CREATE TABLE Sessions (
     SessionID INT AUTO_INCREMENT PRIMARY KEY,
-    TypeOfSession VARCHAR(50),
+    TypeOfSession ENUM('Training', 'Game'),
     LocationID INT,
     FOREIGN KEY (LocationID) REFERENCES Location(LocationID)
 );
