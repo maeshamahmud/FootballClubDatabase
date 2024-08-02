@@ -108,7 +108,7 @@ DROP TABLE IF EXISTS FamilyRelated;
 CREATE TABLE FamilyRelated (
     ClubMemberID INT,
     FamilyMemberID INT,
-    Relationship VARCHAR(50),
+    Relationship Enum('Father', 'Mother', 'GrandFather', 'GrandMother', 'Tutor', 'Partner', 'Friend', 'Other'),
     PRIMARY KEY (ClubMemberID, FamilyMemberID),
     FOREIGN KEY (ClubMemberID) REFERENCES ClubMembers(ClubMemberID),
     FOREIGN KEY (FamilyMemberID) REFERENCES FamilyMember(FamilyMemberID)

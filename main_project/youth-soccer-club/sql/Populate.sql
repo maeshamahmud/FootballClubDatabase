@@ -61,10 +61,10 @@ VALUES
 
 INSERT INTO FamilyRelated (ClubMemberID, FamilyMemberID, Relationship, StartDate, EndDate)
 VALUES
-(1, 1, 'Parent', '2020-01-01', NULL),
-(2, 2, 'Sibling', '2019-02-01', '2023-01-01'),
-(3, 3, 'Cousin', '2021-03-01', NULL),
-(4, 4, 'Guardian', '2020-04-01', '2022-04-01'),
+(1, 1, 'Father', '2020-01-01', NULL),
+(2, 2, 'Mother', '2019-02-01', '2023-01-01'),
+(3, 3, 'Other', '2021-03-01', NULL),
+(4, 4, 'Father', '2020-04-01', '2022-04-01'),
 (5, 5, 'Friend', '2022-05-01', NULL);
 
 INSERT INTO FamilyMemberLocations (FamilyMemberID, LocationID, StartDate, EndDate)
