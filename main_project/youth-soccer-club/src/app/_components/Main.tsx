@@ -1,13 +1,25 @@
 import { RowDataPacket } from "mysql2/promise";
-import { connection } from "../_util/db";
+import { getDb } from "../_util/db";
 import Table from "./Table";
 import TableLink from "./Table/TableLink";
 
 interface Table extends RowDataPacket {}
 
-export default async function Main() {
-  const db = await connection;
+async function getTables() {
+  const db = await getDb();
   const [tables] = await db.execute<Table[]>("SHOW TABLES");
+
+  console.log("tables", tables);
+
+  return tables;
+}
+
+export default async function Main() {
+  const tables = await getTables().catch(() => null);
+
+  if (!tables) {
+    return <div>Error: Could not connect to database.</div>;
+  }
 
   return (
     <div>

@@ -1,21 +1,27 @@
 import Table from "@/app/_components/Table";
-import { connection } from "@/app/_util/db";
-import { writeFileSync } from "fs";
+import { getDb } from "@/app/_util/db";
 import { RowDataPacket } from "mysql2";
 
 interface Row extends RowDataPacket {}
+
+async function getRows(tableName: string) {
+  const db = await getDb();
+  const [rows] = await db.execute<Row[]>(
+    `SELECT * FROM ${tableName} LIMIT 100`
+  );
+  return rows;
+}
 
 export default async function TablePage({
   params,
 }: {
   params: { name: string };
 }) {
-  const db = await connection;
-  const [rows, fieldPackets] = await db.execute<Row[]>(
-    `SELECT * FROM ${params.name} LIMIT 100`
-  );
+  const rows = await getRows(params.name).catch(() => null);
 
-  writeFileSync(`./${params.name}.json`, JSON.stringify(fieldPackets));
+  if (!rows) {
+    return null;
+  }
 
   return (
     <div>
