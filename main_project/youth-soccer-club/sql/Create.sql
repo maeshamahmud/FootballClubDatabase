@@ -109,8 +109,6 @@ CREATE TABLE FamilyRelated (
     ClubMemberID INT,
     FamilyMemberID INT,
     Relationship VARCHAR(50),
-    StartDate DATE,
-    EndDate DATE,
     PRIMARY KEY (ClubMemberID, FamilyMemberID),
     FOREIGN KEY (ClubMemberID) REFERENCES ClubMembers(ClubMemberID),
     FOREIGN KEY (FamilyMemberID) REFERENCES FamilyMember(FamilyMemberID)
