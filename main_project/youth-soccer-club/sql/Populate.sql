@@ -44,7 +44,7 @@ VALUES
 ('Brian', 'Williams', '1995-02-02', '345-67-8902', 'MC34567', '555-555-5571', '909 Spruce St', 'Gotham', 'Ontario', '67890', 'Boys', 'Inactive', 'Defender', 'CMN23456'),
 ('Chris', 'Brown', '2002-03-03', '456-78-9013', 'MC45678', '555-555-5572', '1010 Willow St', 'Star City', 'Alberta', '11223', 'Boys', 'Active', 'Midfielder', 'CMN34567'),
 ('Daniel', 'Smith', '1998-04-04', '567-89-0124', 'MC56789', '555-555-5573', '1111 Fir St', 'Central City', 'Quebec', '44556', 'Boys', 'Inactive', 'Forward', 'CMN45678'),
-('Evan', 'Davis', '2001-05-05', '678-90-1235', 'MC67890', '555-555-5574', '1212 Maple St', 'Coast City', 'Ontario', '77889', 'Boys', 'Active', 'GoalKeeper', 'CMN56789')
+('Evan', 'Davis', '2001-05-05', '678-90-1235', 'MC67890', '555-555-5574', '1212 Maple St', 'Coast City', 'Ontario', '77889', 'Boys', 'Active', 'GoalKeeper', 'CMN56789'),
 ('Emily', 'Taylor', '2003-06-06', '789-01-2345', 'MC78901', '555-555-5575', '1313 Oak St', 'Toronto', 'Ontario', 'M5H 2N2', 'Girls', 'Active', 'GoalKeeper', 'CMN67890'),
 ('Fiona', 'Martinez', '1997-07-07', '890-12-3456', 'MC89012', '555-555-5576', '1414 Pine St', 'Vancouver', 'British Columbia', 'V6B 1A1', 'Girls', 'Inactive', 'Defender', 'CMN78901'),
 ('Grace', 'Lopez', '2004-08-08', '901-23-4567', 'MC90123', '555-555-5577', '1515 Cedar St', 'Montreal', 'Quebec', 'H3B 3A7', 'Girls', 'Active', 'Midfielder', 'CMN89012'),
@@ -59,13 +59,13 @@ VALUES
 ('Friend', 4, 4),
 ('Other', 5, 5);
 
-INSERT INTO FamilyRelated (ClubMemberID, FamilyMemberID, Relationship, StartDate, EndDate)
+INSERT INTO FamilyRelated (ClubMemberID, FamilyMemberID, Relationship)
 VALUES
-(1, 1, 'Parent', '2020-01-01', NULL),
-(2, 2, 'Sibling', '2019-02-01', '2023-01-01'),
-(3, 3, 'Cousin', '2021-03-01', NULL),
-(4, 4, 'Guardian', '2020-04-01', '2022-04-01'),
-(5, 5, 'Friend', '2022-05-01', NULL);
+(1, 1, 'Parent'),
+(2, 2, 'Sibling'),
+(3, 3, 'Cousin'),
+(4, 4, 'Guardian'),
+(5, 5, 'Friend');
 
 INSERT INTO FamilyMemberLocations (FamilyMemberID, LocationID, StartDate, EndDate)
 VALUES

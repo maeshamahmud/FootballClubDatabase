@@ -89,7 +89,7 @@ CREATE TABLE ClubMembers (
     City VARCHAR(100),
     Province VARCHAR(100),
     PostalCode VARCHAR(20),
-    TeamType ENUM('Girls, Boys'),
+    TeamType ENUM('Girls', 'Boys'),
     Status ENUM('Active', 'Inactive'),
     Role ENUM('GoalKeeper','Defender','Midfielder','Forward'),
     ClubMembershipNumber VARCHAR(255) UNIQUE NOT NULL
