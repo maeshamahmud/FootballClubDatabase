@@ -97,7 +97,7 @@ CREATE TABLE ClubMembers (
 
 DROP TABLE IF EXISTS SecondaryFamilyRelated;
 CREATE TABLE SecondaryFamilyRelated (
-    Relationship VARCHAR(255),
+    Relationship Enum('Father', 'Mother', 'GrandFather', 'GrandMother', 'Tutor', 'Partner', 'Friend', 'Other'),
     SecondaryFamilyMemberID INT,
     ClubMemberID INT,
     FOREIGN KEY (SecondaryFamilyMemberID) REFERENCES SecondaryFamilyMember(SecondaryFamilyMemberID),
@@ -172,5 +172,6 @@ CREATE TABLE TeamFormation (
     Time TIME,
     Date DATE,
     Score INT,
+    TeamType ENUM('Boys','Girls')
     TeamType ENUM('Boys','Girls')
 );
