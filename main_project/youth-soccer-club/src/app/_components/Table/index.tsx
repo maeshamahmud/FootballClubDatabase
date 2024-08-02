@@ -41,13 +41,19 @@ export default function Table({
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   if (rows.length === 0) {
-    return <div>No rows found.</div>;
+    return (
+      <div className="flex flex-col items-center gap-4">
+        <table className="min-w-full overflow-hidden rounded-md border border-gray-300 border-x-gray-300/20 bg-verdigris/15 shadow-md shadow-verdigris/50">
+          <div className="p-4">No rows found for {tableName}</div>
+        </table>
+      </div>
+    );
   }
 
   return (
     <div className="flex flex-col items-center gap-4">
       <form ref={formRef}>
-        <table className="min-w-full border border-gray-300 border-x-gray-300/20 bg-verdigris/15">
+        <table className="min-w-full overflow-hidden rounded-md border border-gray-300 border-x-gray-300/20 bg-verdigris/15 shadow-md shadow-verdigris/50">
           <thead>
             <tr>
               {Object.keys(rows[0]).map((key) => (
