@@ -77,11 +77,11 @@ VALUES
 
 INSERT INTO Teams (TeamName, LocationID, TeamType, HeadCoach)
 VALUES
-('Team A', 1, 'Junior', 'Alice Johnson'),
-('Team B', 2, 'Senior', 'Bob Williams'),
-('Team C', 3, 'Junior', 'Charlie Brown'),
-('Team D', 4, 'Senior', 'David Smith'),
-('Team E', 5, 'Junior', 'Eva Davis');
+('Team A', 1, 'Girls', 'Alice Johnson'),
+('Team B', 2, 'Boys', 'Bob Williams'),
+('Team C', 3, 'Girls', 'Charlie Brown'),
+('Team D', 4, 'Boys', 'David Smith'),
+('Team E', 5, 'Girls', 'Eva Davis');
 
 INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
 VALUES

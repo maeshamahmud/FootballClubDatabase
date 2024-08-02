@@ -130,7 +130,7 @@ CREATE TABLE Teams (
     TeamID INT AUTO_INCREMENT PRIMARY KEY,
     TeamName VARCHAR(255),
     LocationID INT,
-    TeamType VARCHAR(50),
+    TeamType ENUM('Boys','Girls'),
     HeadCoach VARCHAR(255),
     FOREIGN KEY (LocationID) REFERENCES Location(LocationID)
 );
