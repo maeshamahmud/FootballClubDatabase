@@ -6,16 +6,19 @@ import TableLink from "./Table/TableLink";
 interface Table extends RowDataPacket {}
 
 async function getTables() {
-  const db = await getDb();
-  const [tables] = await db.execute<Table[]>("SHOW TABLES");
+  try {
+    const db = await getDb();
+    const [tables] = await db.execute<Table[]>("SHOW TABLES");
 
-  console.log("tables", tables);
-
-  return tables;
+    return tables;
+  } catch (error: any) {
+    console.error(error);
+    return null;
+  }
 }
 
 export default async function Main() {
-  const tables = await getTables().catch(() => null);
+  const tables = await getTables();
 
   if (!tables) {
     return <div>Error: Could not connect to database.</div>;
