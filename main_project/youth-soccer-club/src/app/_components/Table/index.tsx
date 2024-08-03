@@ -1,6 +1,6 @@
 "use client";
 
-import { deleteRow, editRow } from "@/app/_actions/tableOps";
+import { deleteRow, editRow, insertRow } from "@/app/_actions/tableOps";
 import React, { useReducer, useRef, useState } from "react";
 import ErrorMessage from "../ErrorMessage";
 
@@ -9,22 +9,29 @@ type Row = Record<string, FieldData>;
 
 export default function Table({
   tableName,
-  rows,
-  showActions,
+  rows: _rows,
+  editable,
   CustomCell,
 }: {
   tableName: string;
   rows: Row[];
-  showActions?: boolean;
+  editable?: boolean;
   CustomCell?: (props: { value: string | number | null }) => React.ReactNode;
 }) {
+  const [rows, setRows] = useState(_rows);
+
   const formRef = useRef<HTMLFormElement>(null);
 
   const [rowIsEditingIdx, _setRowIsEditingIdx] = useState<number | null>(null);
   const setRowIsEditingIdx = (idx: number | null) => {
     _setRowIsEditingIdx(idx);
-    if (rowIsDeletingIdx !== null) {
-      setRowIsDeletingIdx(null);
+    if (idx !== null) {
+      if (rowIsDeletingIdx !== null) {
+        _setRowIsDeletingIdx(null);
+      }
+      if (isInserting) {
+        _setIsInserting(false);
+      }
     }
   };
   const [rowIsDeletingIdx, _setRowIsDeletingIdx] = useState<number | null>(
@@ -32,8 +39,21 @@ export default function Table({
   );
   const setRowIsDeletingIdx = (idx: number | null) => {
     _setRowIsDeletingIdx(idx);
-    if (rowIsEditingIdx !== null) {
-      setRowIsEditingIdx(null);
+    if (idx !== null) {
+      if (rowIsEditingIdx !== null) {
+        _setRowIsEditingIdx(null);
+      }
+      if (isInserting) {
+        _setIsInserting(false);
+      }
+    }
+  };
+  const [isInserting, _setIsInserting] = useState(false);
+  const setIsInserting = (val: boolean) => {
+    _setIsInserting(val);
+    if (val) {
+      _setRowIsEditingIdx(null);
+      _setRowIsDeletingIdx(null);
     }
   };
 
@@ -66,7 +86,7 @@ export default function Table({
           onClose={() => setErrorMessage(null)}
         />
       )}
-      <form ref={formRef}>
+      <form ref={formRef} className="relative">
         <table className="min-w-full overflow-hidden rounded-md border border-gray-300 border-x-gray-300/20 bg-verdigris/15 shadow-md shadow-verdigris/50">
           <thead>
             <tr>
@@ -75,7 +95,7 @@ export default function Table({
                   {camelToTitleCase(key)}
                 </th>
               ))}
-              {showActions && <th className="border px-4 py-2">Actions</th>}
+              {editable && <th className="border px-4 py-2">Actions</th>}
             </tr>
           </thead>
           <tbody>
@@ -119,7 +139,7 @@ export default function Table({
                     );
                   })}
 
-                  {showActions && (
+                  {editable && (
                     <td className="border border-gray-300 border-x-gray-300/20 px-4 py-2">
                       <span className="flex grow select-none items-center justify-center gap-2 font-mono font-bold">
                         {isEditing || isDeleting ? (
@@ -131,22 +151,33 @@ export default function Table({
                                 e.stopPropagation();
 
                                 if (isDeleting) {
-                                  const res = await deleteRow(tableName, row);
+                                  const cleanRow = removeFalsyValues(row);
+                                  const res = await deleteRow(
+                                    tableName,
+                                    removeFalsyValues(cleanRow)
+                                  );
                                   if (!res.status) {
                                     resetForm();
                                     setErrorMessage(
                                       `An error occured:\n${res.message}`
                                     );
                                   }
+                                  setRows(
+                                    rows.filter((_, idx) => idx !== index)
+                                  );
                                   setRowIsDeletingIdx(null);
                                 } else {
                                   const formData = new FormData(
                                     formRef.current!
                                   );
+                                  const newRow = Object.fromEntries(
+                                    formData.entries()
+                                  ) as Record<string, string>;
+                                  const cleanNewRow = removeFalsyValues(newRow);
                                   const res = await editRow(
                                     tableName,
                                     row,
-                                    formData
+                                    cleanNewRow
                                   );
                                   if (!res.status) {
                                     resetForm();
@@ -205,9 +236,84 @@ export default function Table({
                 </tr>
               );
             })}
+            {isInserting && (
+              <tr>
+                {Object.keys(rows[0]).map((key, index) => {
+                  return (
+                    <td
+                      key={index}
+                      className="border border-gray-300 border-x-gray-300/20 px-4 py-2"
+                    >
+                      <textarea
+                        key={resetFormKey}
+                        defaultValue={""}
+                        placeholder={key}
+                        name={key}
+                        className="w-full resize-none appearance-none text-nowrap break-all bg-transparent outline-none [-webkit-appearance:none] [field-sizing:content] placeholder:text-gray-500/50"
+                      />
+                    </td>
+                  );
+                })}
+
+                {editable && (
+                  <td className="border border-gray-300 border-x-gray-300/20 px-4 py-2">
+                    <span className="flex grow select-none items-center justify-center gap-2 font-mono font-bold">
+                      <button
+                        className="uppercase text-green-600"
+                        onClick={async (e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+
+                          const formData = new FormData(formRef.current!);
+                          const newRow = Object.fromEntries(
+                            formData.entries()
+                          ) as Record<string, string>;
+                          const cleanNewRow = removeFalsyValues(newRow);
+
+                          const res = await insertRow(tableName, cleanNewRow);
+                          if (!res.status) {
+                            resetForm();
+                            setErrorMessage(
+                              `An error occured:\n${res.message}`
+                            );
+                          } else if (res.data) {
+                            setRows([...rows, res.data[0]]);
+                          }
+
+                          setIsInserting(false);
+                        }}
+                      >
+                        Confirm
+                      </button>
+                      <button
+                        className="uppercase text-red-500"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+
+                          setIsInserting(false);
+                        }}
+                      >
+                        Cancel
+                      </button>
+                    </span>
+                  </td>
+                )}
+              </tr>
+            )}
           </tbody>
         </table>
+        {editable && !isInserting && (
+          <button
+            className="absolute right-0 top-full mt-2 flex h-10 w-12 items-center justify-center rounded-lg bg-verdigris/50 text-3xl font-extrabold leading-[3] transition-all hover:bg-verdigris/75"
+            onClick={() => setIsInserting(true)}
+          >
+            <span className="-translate-y-0.5">+</span>
+          </button>
+        )}
       </form>
+      {/* spacer for the absolutely positioned + button above */}
+      {editable && !isInserting && <div className="h-12"></div>}
     </div>
   );
 }
@@ -217,4 +323,16 @@ function camelToTitleCase(str: string) {
     .replace(/([A-Z])/g, " $1")
     .trim()
     .replace(/^./, str[0].toUpperCase());
+}
+
+function removeFalsyValues<T extends Record<string, any>>(obj: T): T {
+  const result: Record<string, any> = {};
+
+  for (const key in obj) {
+    if (obj[key]) {
+      result[key] = obj[key];
+    }
+  }
+
+  return result as T;
 }

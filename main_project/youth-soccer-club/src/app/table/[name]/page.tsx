@@ -25,7 +25,7 @@ export default async function TablePage({
 
   return (
     <div>
-      <Table tableName={params.name} rows={rows} showActions />
+      <Table tableName={params.name} rows={rows} editable />
     </div>
   );
 }

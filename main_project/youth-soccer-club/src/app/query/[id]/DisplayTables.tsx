@@ -15,7 +15,7 @@ export default function DisplayTables({
           key={index}
           tableName={tableNames[index]}
           rows={table}
-          showActions={true}
+          editable
         />
       ))}
     </div>

@@ -1,6 +1,5 @@
 import { RowDataPacket } from "mysql2/promise";
 import { getDb } from "../_util/db";
-import Table from "./Table";
 import TableLink from "./Table/TableLink";
 
 interface Table extends RowDataPacket {}
