@@ -1,7 +1,11 @@
 import { readFileSync } from "fs";
 import { getDb } from "./db";
 
+let seeded = false;
+
 export async function seed() {
+  if (seeded) return;
+
   const db = await getDb();
 
   console.log("Creating database...");
@@ -24,7 +28,5 @@ export async function seed() {
 
   console.log("Seeding complete!");
 
-  process.exit(0);
+  seeded = true;
 }
-
-seed();

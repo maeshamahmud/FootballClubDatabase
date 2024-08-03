@@ -8,7 +8,7 @@
     "start": "HOSTNAME=0.0.0.0 node ./standalone/server.js",
     "lint": "tsc --noEmit && next lint",
     "format": "prettier --write --ignore-unknown .",
-    "seed": "bun run src/app/_util/seed.ts",
+    "seed": "bun -e \"require('./src/app/_util/seed.ts').seed().then(() => process.exit(0))\"",
     "gen_db_types": "bun x @rmp135/sql-ts -c ./mysql.json"
   },
   "dependencies": {

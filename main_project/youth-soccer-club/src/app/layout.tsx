@@ -4,6 +4,10 @@ import Link from "next/link";
 import { Suspense } from "react";
 import "./globals.css";
 
+if (process.env.SEED === "true") {
+  import("./_util/seed").then(({ seed }) => seed());
+}
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
