@@ -37,9 +37,11 @@ export default function RootLayout({
 
 function Navbar() {
   return (
-    <nav className="flex flex-col items-center gap-4 text-nowrap pb-12 [&_a:hover]:bg-verdigris/25 [&_a:hover]:text-white [&_a]:rounded-lg [&_a]:bg-verdigris/15 [&_a]:px-2 [&_a]:py-1 [&_a]:text-xl [&_a]:text-gray-400 [&_a]:transition-all">
-      <h1 className="text-3xl font-bold text-white">Youth Soccer Club</h1>
-      <div className="flex items-center gap-4">
+    <nav className="flex flex-col items-center gap-4 text-nowrap pb-12">
+      <Link href="/">
+        <h1 className="text-3xl font-bold text-white">Youth Soccer Club</h1>
+      </Link>
+      <div className="flex items-center gap-4 [&_a:hover]:bg-verdigris/25 [&_a:hover]:text-white [&_a]:rounded-lg [&_a]:bg-verdigris/15 [&_a]:px-2 [&_a]:py-1 [&_a]:text-xl [&_a]:text-gray-400 [&_a]:transition-all">
         <Link href="/query/1">Query 1-6</Link>
         <Link href="/query/7">Query 7</Link>
         <Link href="/query/8">Query 8</Link>

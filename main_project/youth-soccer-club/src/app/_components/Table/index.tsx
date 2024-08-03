@@ -56,7 +56,7 @@ export default function Table({
   }
 
   return (
-    <div className="flex flex-col items-center gap-4">
+    <div className="flex flex-col items-center gap-4 [font-size:75%]">
       {tableName && (
         <h2 className="text-2xl font-bold text-white">{tableName}</h2>
       )}
