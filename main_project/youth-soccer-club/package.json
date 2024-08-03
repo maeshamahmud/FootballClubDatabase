@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "HOSTNAME=0.0.0.0 node ./standalone/server.js",
     "lint": "tsc --noEmit && next lint",
     "format": "prettier --write --ignore-unknown .",
+    "seed": "bun run src/app/_util/seed.ts",
     "gen_db_types": "bun x @rmp135/sql-ts -c ./mysql.json"
   },
   "dependencies": {

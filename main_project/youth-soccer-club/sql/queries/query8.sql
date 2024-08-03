@@ -23,4 +23,4 @@ JOIN
 JOIN
     ClubMembers cm ON sfr.ClubMemberID = cm.ClubMemberID
 WHERE
-    fm.FamilyMemberID = 1 OR 2;
+    fm.FamilyMemberID = ? /* 1 OR 2 */;

@@ -1,7 +1,7 @@
 "use server";
 
 import sql, { join, raw } from "sql-template-tag";
-import { connection } from "../_util/db";
+import { getDb } from "../_util/db";
 
 export async function editRow(
   tableName: string,
@@ -18,7 +18,7 @@ export async function editRow(
   }
 
   try {
-    const db = await connection;
+    const db = await getDb();
 
     const q = sql`UPDATE \`${raw(tableName)}\` SET ${entries} WHERE ${join(
       Object.entries(originalRow).map(
@@ -43,7 +43,7 @@ export async function deleteRow(
   originalRow: Record<string, string | number | Date | null>
 ) {
   try {
-    const db = await connection;
+    const db = await getDb();
 
     const q = sql`DELETE FROM \`${raw(tableName)}\` WHERE ${join(
       Object.entries(originalRow).map(

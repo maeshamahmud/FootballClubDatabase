@@ -8,7 +8,7 @@ SET Name = 'Main Office',
     WebAddress = 'www.mainoffice.com',
     Type = 'Head',
     Capacity = 600,
-    GeneralManager = 'John Doe Updated'
+    Personnel = 'John Doe Updated'
 WHERE LocationID = 1;
 
 UPDATE Personnel
@@ -16,14 +16,14 @@ SET FirstName = 'Alice Updated',
     LastName = 'Johnson Updated',
     DateOfBirth = '1981-01-01',
     SocialSecurityNumber = '123-45-6780',
-    MedicalCardNumber = 'MC12346',
+    MedicalCardNumber = 'MC42066',
     TelephoneNumber = '555-555-5560',
     Address = '123 Updated Birch St',
     City = 'New Metropolis',
     Province = 'New State',
     PostalCode = '54321',
     EmailAddress = 'alice.updated@domain.com',
-    Role = 'Senior Manager',
+    Role = 'GeneralManager',
     Mandate = 'Salaried',
     StartDate = '2021-01-01',
     EndDate = NULL
@@ -57,13 +57,12 @@ SET FirstName = 'Laura Updated',
 WHERE SecondaryFamilyMemberID = 1;
 
 UPDATE SecondaryFamilyRelated
-SET Relationship = 'Updated Parent',
+SET Relationship = 'GrandMother',
     ClubMemberID = 2
 WHERE SecondaryFamilyMemberID = 1 AND ClubMemberID = 1;
 
 UPDATE FamilyRelated
-SET Relationship = 'Updated Parent',
-    EndDate = '2023-12-31'
+SET Relationship = 'Other'
 WHERE ClubMemberID = 1 AND FamilyMemberID = 1;
 
 UPDATE FamilyMemberLocations
@@ -81,16 +80,16 @@ SET FirstName = 'Adam Updated',
     City = 'New Metropolis',
     Province = 'New State',
     PostalCode = '54321',
-    TeamType = 'Senior',
+    TeamType = 'Girls',
     Status = 'Active',
-    Role = 'Defender',
+    Role = 'Trainer',
     ClubMembershipNumber = 'CMN12346'
 WHERE ClubMemberID = 1;
 
 UPDATE Teams
 SET TeamName = 'Updated Team A',
     LocationID = 2,
-    TeamType = 'Senior',
+    TeamType = 'Girls',
     HeadCoach = 'Updated Coach A'
 WHERE TeamID = 1;
 
@@ -111,5 +110,5 @@ UPDATE TeamFormation
 SET Time = '15:00:00',
     Date = '2024-06-01',
     Score = 6,
-    TeamType = 'Senior'
+    TeamType = 'Boys'
 WHERE TeamFormationID = 1;

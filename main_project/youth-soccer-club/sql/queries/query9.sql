@@ -23,7 +23,7 @@ JOIN
 JOIN
     ClubMembers cm ON cmt.ClubMemberID = cm.ClubMemberID
 WHERE
-    l.Name = 'Branch C'
-    AND tf.Date < '2025-04-04'
+     l.Name = ? /*'Branch E'*/
+    AND tf.Date < ? /*'2025-04-04'*/
 ORDER BY
     tf.Time ASC;
