@@ -1,4 +1,3 @@
-
 INSERT INTO Location (Name, Address, City, Province, PostalCode, TelephoneNumber, WebAddress, Type, Capacity, Personnel)
 VALUES
 ('Branch E', '203 Pine St', 'River City', 'State', '89012', '123-456-7895', 'www.branchE.com', 'Branch', 300, 'Ella Grey'),
@@ -273,9 +272,38 @@ VALUES
 -- Additional rows for the ClubMemberLocations table
 INSERT INTO ClubMemberLocations (LocationID, ClubMemberID, StartDate, EndDate)
 VALUES
+(6, 1, '2023-01-01', NULL),
+(6, 2, '2023-01-01', NULL),
+(6, 3, '2023-01-01', NULL),
 (6, 6, '2018-06-06', NULL),
+(7, 6, '2023-01-01', NULL),
+(8, 6, '2023-02-01', NULL),
+(9, 6, '2023-03-01', NULL),
+(13, 6, '2023-04-01', NULL),
+(14, 6, '2023-05-01', NULL),
+(15, 8, '2023-06-01', NULL),
+(17, 8, '2023-07-01', NULL),
+(18, 8, '2023-08-01', NULL),
+(12, 10, '2023-09-01', NULL),
+(13, 10, '2023-10-01', NULL),
+(14, 10, '2023-11-01', NULL),
+(7, 1, '2023-02-01', NULL),
+(7, 2, '2023-02-01', NULL),
+(7, 3, '2023-02-01', NULL),
 (7, 7, '2017-07-07', NULL),
+(7, 8, '2023-01-01', NULL),
+(9, 8, '2023-02-01', NULL),
+(7, 10, '2023-01-01', NULL),
+(9, 10, '2023-02-01', NULL),
+(11, 10, '2023-03-01', NULL),
+(10, 8, '2023-03-01', NULL),
+(8, 1, '2023-03-01', NULL),
+(8, 2, '2023-03-01', NULL),
+(8, 3, '2023-03-01', NULL),
 (8, 8, '2016-08-08', '2023-08-08'),
+(9, 1, '2023-04-01', NULL),
+(9, 2, '2023-04-01', NULL),
+(9, 3, '2023-04-01', NULL),
 (9, 9, '2015-09-09', NULL),
 (10, 10, '2014-10-10', '2022-10-10'),
 (11, 11, '2013-11-11', NULL),
