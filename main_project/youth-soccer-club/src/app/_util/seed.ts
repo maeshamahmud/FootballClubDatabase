@@ -14,6 +14,14 @@ export async function seed() {
     ${readFileSync("./sql/Populate.sql", "utf8")}
   `);
 
+  console.log("Creating triggers...");
+  await db.query(`
+    ${readFileSync("./sql/queries/query19-1.sql", "utf8")}
+    ${readFileSync("./sql/queries/query19-2.sql", "utf8")}
+    ${readFileSync("./sql/queries/query19-3.sql", "utf8")}
+    ${readFileSync("./sql/queries/query19-4.sql", "utf8")}
+  `);
+
   console.log("Seeding complete!");
 
   process.exit(0);

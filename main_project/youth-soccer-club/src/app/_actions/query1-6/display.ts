@@ -15,17 +15,9 @@ export async function getTables() {
       selectTablesSql
     )) as unknown as [Row[][], FieldPacket[][]];
 
-    // for (const fieldPacket of fieldPackets) {
-    //   for (const fieldPacketKey in fieldPacket) {
-    //     console.log(fieldPacket[fieldPacketKey as keyof typeof fieldPacket]);
-    //   }
-    // }
+    const tableNames = fieldPackets.map((packet) => packet[0].table);
 
-    // TODO get table names
-    return [tables, fieldPackets.map((packet) => "")] as [
-      tables: Row[][],
-      tableNames: string[],
-    ];
+    return [tables, tableNames] as [tables: Row[][], tableNames: string[]];
   } catch (err) {
     console.error("Error reading directory or file:", err);
   }

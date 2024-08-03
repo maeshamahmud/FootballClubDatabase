@@ -20,6 +20,7 @@
     "prettier-plugin-tailwindcss": "^0.6.5",
     "react": "^18",
     "react-dom": "^18",
+    "server-only": "^0.0.1",
     "sql-template-tag": "^5.2.1"
   },
   "devDependencies": {

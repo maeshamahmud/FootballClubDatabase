@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 import { Suspense } from "react";
 import "./globals.css";
 
@@ -21,12 +22,34 @@ export default function RootLayout({
         <meta name="darkreader-lock"></meta>
       </head>
       <body className={inter.className}>
-        <div
-          className={`flex min-h-screen flex-col items-center justify-between p-24`}
-        >
+        <div className={`flex min-h-screen flex-col items-center p-16`}>
+          <Navbar />
           <Suspense fallback={null}>{children}</Suspense>
         </div>
       </body>
     </html>
+  );
+}
+
+function Navbar() {
+  return (
+    <nav className="flex flex-col items-center gap-4 text-nowrap pb-12 [&_a:hover]:bg-verdigris/25 [&_a:hover]:text-white [&_a]:rounded-lg [&_a]:bg-verdigris/15 [&_a]:px-2 [&_a]:py-1 [&_a]:text-xl [&_a]:text-gray-400 [&_a]:transition-all">
+      <h1 className="text-3xl font-bold text-white">Youth Soccer Club</h1>
+      <div className="flex items-center gap-4">
+        <Link href="/query/1">Query 1-6</Link>
+        <Link href="/query/7">Query 7</Link>
+        <Link href="/query/8">Query 8</Link>
+        <Link href="/query/9">Query 9</Link>
+        <Link href="/query/10">Query 10</Link>
+        <Link href="/query/11">Query 11</Link>
+        <Link href="/query/12">Query 12</Link>
+        <Link href="/query/13">Query 13</Link>
+        <Link href="/query/14">Query 14</Link>
+        <Link href="/query/15">Query 15</Link>
+        <Link href="/query/16">Query 16</Link>
+        <Link href="/query/17">Query 17</Link>
+        <Link href="/query/18">Query 18</Link>
+      </div>
+    </nav>
   );
 }

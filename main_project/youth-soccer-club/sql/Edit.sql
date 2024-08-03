@@ -82,7 +82,7 @@ SET FirstName = 'Adam Updated',
     PostalCode = '54321',
     TeamType = 'Girls',
     Status = 'Active',
-    Role = 'Trainer',
+    Role = 'Defender',
     ClubMembershipNumber = 'CMN12346'
 WHERE ClubMemberID = 1;
 
@@ -102,7 +102,7 @@ SET EndDate = '2023-12-31'
 WHERE LocationID = 1 AND ClubMemberID = 1;
 
 UPDATE Sessions
-SET TypeOfSession = 'Updated Training',
+SET TypeOfSession = 'Game',
     LocationID = 2
 WHERE SessionID = 1;
 

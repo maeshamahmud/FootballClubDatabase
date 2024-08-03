@@ -60,6 +60,12 @@ export default function Table({
       {tableName && (
         <h2 className="text-2xl font-bold text-white">{tableName}</h2>
       )}
+      {errorMessage && (
+        <ErrorMessage
+          message={errorMessage}
+          onClose={() => setErrorMessage(null)}
+        />
+      )}
       <form ref={formRef}>
         <table className="min-w-full overflow-hidden rounded-md border border-gray-300 border-x-gray-300/20 bg-verdigris/15 shadow-md shadow-verdigris/50">
           <thead>
@@ -202,13 +208,6 @@ export default function Table({
           </tbody>
         </table>
       </form>
-
-      {errorMessage && (
-        <ErrorMessage
-          message={errorMessage}
-          onClose={() => setErrorMessage(null)}
-        />
-      )}
     </div>
   );
 }
