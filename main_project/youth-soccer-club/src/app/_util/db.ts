@@ -2,11 +2,12 @@ import sqlConfig from "@/../mysql.json";
 import mysql2 from "mysql2/promise";
 
 let connection: mysql2.Connection | null = null;
+let connectionPromise: Promise<mysql2.Connection | null> | null = null;
 
 export async function getDb() {
-  let maxTries = 3;
+  let maxTries = 5;
   while (!connection) {
-    connection = await mysql2
+    connectionPromise ??= mysql2
       .createConnection({
         ...sqlConfig.connection,
         multipleStatements: true,
@@ -18,7 +19,12 @@ export async function getDb() {
       .catch((err) => {
         console.error(err);
         return null;
+      })
+      .finally(() => {
+        connectionPromise = null;
       });
+
+    connection = await connectionPromise;
 
     if (maxTries === 0) {
       throw new Error("Could not connect to database");
@@ -26,7 +32,7 @@ export async function getDb() {
     maxTries--;
 
     if (!connection) {
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 3000));
     }
   }
   return connection;
