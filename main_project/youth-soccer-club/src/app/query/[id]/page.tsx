@@ -1,5 +1,6 @@
 import "server-only";
 
+import { getTables } from "@/app/_actions/query1-6/display";
 import { runSingleQuery } from "@/app/_actions/singleQuery";
 import ErrorMessage from "@/app/_components/ErrorMessage";
 import Table from "@/app/_components/Table";
@@ -33,7 +34,7 @@ function loadQueryFiles() {
 
 export default async function Query({ params }: { params: { id: string } }) {
   if (Number(params.id) >= 1 && Number(params.id) <= 6) {
-    return <CRUD />;
+    return <CRUD initialTableData={await getTables()} />;
   }
 
   const querySelection = `query${params.id}` as const;

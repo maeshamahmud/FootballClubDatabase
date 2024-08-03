@@ -8,10 +8,14 @@ import ErrorMessage from "@/app/_components/ErrorMessage";
 import { useEffect, useState } from "react";
 import DisplayTables from "./DisplayTables";
 
-export default function CRUD() {
-  const [tableData, setTableData] = useState<Awaited<
-    ReturnType<typeof getTables>
-  > | null>(null);
+type TableData = Awaited<ReturnType<typeof getTables>>;
+
+export default function CRUD({
+  initialTableData,
+}: {
+  initialTableData: TableData | null;
+}) {
+  const [tableData, setTableData] = useState(initialTableData);
 
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -67,7 +71,14 @@ export default function CRUD() {
         >
           Delete
         </button>
-        <button onClick={displayTables}>Display</button>
+        <button
+          onClick={() => {
+            setTableData(null);
+            setTimeout(displayTables, 500);
+          }}
+        >
+          Display
+        </button>
       </div>
       {errorMessage && (
         <ErrorMessage
