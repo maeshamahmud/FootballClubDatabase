@@ -369,3 +369,112 @@ VALUES
 ('08:00:00', '2024-11-11', 4, 'Boys'),
 ('09:00:00', '2024-12-12', 1, 'Girls'),
 ('10:00:00', '2024-01-01', 5, 'Boys');
+
+
+-- ---- Insert statements for query 15 ---- --
+-- Insert a new family member who will be a head coach
+INSERT INTO FamilyMember (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicalCardNumber, TelephoneNumber, Address, City, Province, PostalCode, EmailAddress, LocationID)
+VALUES
+('Hank', 'Williams', '1980-05-05', '111-22-3333', 'MC11122', '555-555-1111', '123 Main St', 'Sample City', 'State', '12345', 'hank.williams@example.com', 1);
+
+-- Make Hank Williams a head coach for a team at LocationID 1
+INSERT INTO Teams (TeamName, LocationID, TeamType, HeadCoach)
+VALUES
+('Team Alpha', 1, 'Boys', (SELECT FamilyMemberID FROM FamilyMember WHERE SocialSecurityNumber = '111-22-3333'));
+
+-- Add an active club member and associate with Hank Williams
+INSERT INTO ClubMembers (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicalCardNumber, TelephoneNumber, Address, City, Province, PostalCode, TeamType, Status, Role, ClubMembershipNumber)
+VALUES
+('Jake', 'Williams', '2015-06-06', '222-33-4444', 'MC22233', '555-555-2222', '123 Main St', 'Sample City', 'State', '12345', 'Boys', 'Active', 'Defender', 'CMN12345');
+
+-- Associate Jake Williams with LocationID 1
+INSERT INTO ClubMemberLocations (LocationID, ClubMemberID, StartDate, EndDate)
+VALUES
+(1, (SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-33-4444'), '2023-01-01', NULL);
+
+-- Link Hank Williams to Jake Williams as a family member
+INSERT INTO FamilyRelated (ClubMemberID, FamilyMemberID, Relationship)
+VALUES
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-33-4444'), (SELECT FamilyMemberID FROM FamilyMember WHERE SocialSecurityNumber = '111-22-3333'), 'Father');
+
+
+
+-- ---- Insert statements for query 11 ---- --
+-- Add game sessions for LocationID 15 (Branch S)
+INSERT INTO Sessions (TypeOfSession, LocationID) VALUES ('Game', 15), ('Game', 15), ('Game', 15);
+INSERT INTO TeamFormation (Time, Date, Score, TeamType) VALUES
+('15:00:00', '2024-01-10', 3, 'Boys'),
+('16:00:00', '2024-01-15', 2, 'Boys'),
+('17:00:00', '2024-01-20', 4, 'Boys');
+
+-- Add game sessions for LocationID 14 (Branch R)
+INSERT INTO Sessions (TypeOfSession, LocationID) VALUES ('Game', 14), ('Game', 14), ('Game', 14);
+INSERT INTO TeamFormation (Time, Date, Score, TeamType) VALUES
+('18:00:00', '2024-01-25', 1, 'Boys'),
+('19:00:00', '2024-02-10', 5, 'Boys'),
+('20:00:00', '2024-02-15', 3, 'Boys');
+
+-- Add game sessions for LocationID 13 (Branch Q)
+INSERT INTO Sessions (TypeOfSession, LocationID) VALUES ('Game', 13), ('Game', 13), ('Game', 13);
+INSERT INTO TeamFormation (Time, Date, Score, TeamType) VALUES
+('21:00:00', '2024-02-20', 2, 'Boys'),
+('22:00:00', '2024-03-10', 4, 'Boys'),
+('23:00:00', '2024-03-15', 1, 'Boys');
+
+-- Add game sessions for LocationID 5 (Branch I)
+INSERT INTO Sessions (TypeOfSession, LocationID) VALUES ('Game', 5), ('Game', 5), ('Game', 5);
+INSERT INTO TeamFormation (Time, Date, Score, TeamType) VALUES
+('00:00:00', '2024-03-20', 5, 'Boys'),
+('01:00:00', '2024-01-05', 3, 'Boys'),
+('02:00:00', '2024-01-07', 2, 'Boys');
+
+
+-- Insert new club members to ensure they exist in the ClubMembers table and meet the age constraint
+INSERT INTO ClubMembers (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicalCardNumber, TelephoneNumber, Address, City, Province, PostalCode, TeamType, Status, Role, ClubMembershipNumber)
+VALUES
+('Alice', 'Johnson', '2016-01-01', '111-11-1111', 'MC11111', '555-555-1111', '123 Main St', 'City A', 'State A', '11111', 'Girls', 'Active', 'GoalKeeper', 'CMN11111'),
+('Bob', 'Smith', '2015-02-02', '222-22-2222', 'MC22222', '555-555-2222', '456 Oak St', 'City B', 'State B', '22222', 'Boys', 'Active', 'Defender', 'CMN22222'),
+('Charlie', 'Brown', '2014-03-03', '333-33-3333', 'MC33333', '555-555-3333', '789 Pine St', 'City C', 'State C', '33333', 'Boys', 'Active', 'Forward', 'CMN33333'),
+('David', 'Williams', '2016-04-04', '444-44-4444', 'MC44444', '555-555-4444', '101 Elm St', 'City D', 'State D', '44444', 'Boys', 'Active', 'Midfielder', 'CMN44444');
+
+-- Associate club members with team formations
+INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
+VALUES
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '111-11-1111'), '2024-01-10', NULL, 1),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-22-2222'), '2024-01-10', NULL, 1),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '333-33-3333'), '2024-01-10', NULL, 1),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '444-44-4444'), '2024-01-15', NULL, 2),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '111-11-1111'), '2024-01-15', NULL, 2),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-22-2222'), '2024-01-15', NULL, 2),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '333-33-3333'), '2024-01-20', NULL, 3),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '444-44-4444'), '2024-01-20', NULL, 3),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '111-11-1111'), '2024-01-20', NULL, 3),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-22-2222'), '2024-01-25', NULL, 4),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '333-33-3333'), '2024-01-25', NULL, 4),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '444-44-4444'), '2024-01-25', NULL, 4),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '111-11-1111'), '2024-02-10', NULL, 5),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-22-2222'), '2024-02-10', NULL, 5),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '333-33-3333'), '2024-02-10', NULL, 5),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '444-44-4444'), '2024-02-15', NULL, 6),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '111-11-1111'), '2024-02-15', NULL, 6),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-22-2222'), '2024-02-15', NULL, 6),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '333-33-3333'), '2024-02-20', NULL, 7),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '444-44-4444'), '2024-02-20', NULL, 7),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '111-11-1111'), '2024-02-20', NULL, 7),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-22-2222'), '2024-03-10', NULL, 8),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '333-33-3333'), '2024-03-10', NULL, 8),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '444-44-4444'), '2024-03-10', NULL, 8),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '111-11-1111'), '2024-03-15', NULL, 9),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-22-2222'), '2024-03-15', NULL, 9),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '333-33-3333'), '2024-03-15', NULL, 9),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '444-44-4444'), '2024-03-20', NULL, 10),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '111-11-1111'), '2024-03-20', NULL, 10),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-22-2222'), '2024-03-20', NULL, 10),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '333-33-3333'), '2024-03-20', NULL, 10),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '444-44-4444'), '2024-03-20', NULL, 10),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '111-11-1111'), '2024-01-05', NULL, 11),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-22-2222'), '2024-01-05', NULL, 11),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '333-33-3333'), '2024-01-05', NULL, 11),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '444-44-4444'), '2024-01-07', NULL, 12),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '111-11-1111'), '2024-01-07', NULL, 12),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-22-2222'), '2024-01-07', NULL, 12);

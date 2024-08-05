@@ -9,6 +9,6 @@ JOIN ClubMemberLocations cml ON cm.ClubMemberID = cml.ClubMemberID
 JOIN Teams t ON cml.LocationID = t.LocationID
 WHERE cm.Status = 'Active'
     AND t.HeadCoach = fm.FamilyMemberID
-    AND cml.LocationID = ? -- Replace with the specific location ID
+    AND cml.LocationID = 1 -- location ID 1
 GROUP BY fm.FirstName, fm.LastName, fm.TelephoneNumber
 ORDER BY fm.LastName, fm.FirstName;
