@@ -1,10 +1,10 @@
 SELECT
-    p.FirstName AS first_name,
-    p.LastName AS last_name,
-    p.TelephoneNumber AS telephone_number,
-    p.EmailAddress AS email_address,
-    l.Name AS location_name,
-    p.Role AS current_role
+   p.FirstName AS first_name,
+   p.LastName AS last_name,
+   p.TelephoneNumber AS telephone_number,
+   p.EmailAddress AS email_address,
+   l.Name AS location_name,
+   p.Role AS current_role
 FROM Personnel p
 JOIN PersonnelLocations pl ON p.PersonnelID = pl.PersonnelID
 JOIN Location l ON pl.LocationID = l.LocationID

@@ -478,3 +478,149 @@ VALUES
 ((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '444-44-4444'), '2024-01-07', NULL, 12),
 ((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '111-11-1111'), '2024-01-07', NULL, 12),
 ((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-22-2222'), '2024-01-07', NULL, 12);
+
+-- Ensure club members exist
+INSERT INTO ClubMembers (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicalCardNumber, TelephoneNumber, Address, City, Province, PostalCode, TeamType, Status, Role, ClubMembershipNumber)
+VALUES
+('Eve', 'Adams', '2015-06-06', '555-55-5555', 'MC55555', '555-555-5555', '123 Cedar St', 'City E', 'State E', '55555', 'Girls', 'Active', 'GoalKeeper', 'CMN55555'),
+('Frank', 'Baker', '2014-07-07', '666-66-6666', 'MC66666', '555-555-6666', '456 Elm St', 'City F', 'State F', '66666', 'Boys', 'Active', 'Defender', 'CMN66666'),
+('Grace', 'Clark', '2013-08-08', '777-77-7777', 'MC77777', '555-555-7777', '789 Maple St', 'City G', 'State G', '77777', 'Girls', 'Active', 'Forward', 'CMN77777');
+
+-- Associate club members with team formations for Branch Q (LocationID 13)
+INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
+VALUES
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '555-55-5555'), '2024-01-10', NULL, 13),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '666-66-6666'), '2024-01-10', NULL, 13),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '777-77-7777'), '2024-01-10', NULL, 13);
+
+-- Ensure club members exist
+INSERT INTO ClubMembers (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicalCardNumber, TelephoneNumber, Address, City, Province, PostalCode, TeamType, Status, Role, ClubMembershipNumber)
+VALUES
+('Hannah', 'Davis', '2015-09-09', '888-88-8888', 'MC88888', '555-555-8888', '123 Oak St', 'City H', 'State H', '88888', 'Girls', 'Active', 'Midfielder', 'CMN88888'),
+('Ian', 'Evans', '2014-10-10', '999-99-9999', 'MC99999', '555-555-9999', '456 Birch St', 'City I', 'State I', '99999', 'Boys', 'Active', 'GoalKeeper', 'CMN99999'),
+('Jane', 'Frank', '2013-11-11', '000-00-0000', 'MC00000', '555-555-0000', '789 Ash St', 'City J', 'State J', '00000', 'Girls', 'Active', 'Defender', 'CMN00000');
+
+-- Associate club members with team formations for Branch R (LocationID 14)
+INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
+VALUES
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '888-88-8888'), '2024-01-15', NULL, 14),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '999-99-9999'), '2024-01-15', NULL, 14),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '000-00-0000'), '2024-01-15', NULL, 14);
+
+-- Ensure club members exist
+INSERT INTO ClubMembers (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicalCardNumber, TelephoneNumber, Address, City, Province, PostalCode, TeamType, Status, Role, ClubMembershipNumber)
+VALUES
+('Kyle', 'Green', '2015-12-12', '111-11-2222', 'MC11112', '555-555-1112', '123 Pine St', 'City K', 'State K', '11112', 'Boys', 'Active', 'Forward', 'CMN11112'),
+('Laura', 'Hill', '2014-01-01', '222-22-3333', 'MC22223', '555-555-2223', '456 Spruce St', 'City L', 'State L', '22223', 'Girls', 'Active', 'Midfielder', 'CMN22223'),
+('Mike', 'Irving', '2013-02-02', '333-33-4444', 'MC33334', '555-555-3334', '789 Fir St', 'City M', 'State M', '33334', 'Boys', 'Active', 'Defender', 'CMN33334');
+
+-- Associate club members with team formations for Branch I (LocationID 5)
+INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
+VALUES
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '111-11-2222'), '2024-01-20', NULL, 5),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-22-3333'), '2024-01-20', NULL, 5),
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '333-33-4444'), '2024-01-20', NULL, 5);
+
+
+-- ---- Insert statements for query 14 ---- --
+-- Add club members with multiple roles
+INSERT INTO ClubMembers (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicalCardNumber, TelephoneNumber, Address, City, Province, PostalCode, TeamType, Status, Role, ClubMembershipNumber)
+VALUES
+('Alex', 'Johnson', '2015-01-01', '123-45-6789', 'MC12345', '555-555-0001', '123 Main St', 'City A', 'State A', '11111', 'Boys', 'Active', 'GoalKeeper', 'CMN00001'),
+('Bobby', 'Smith', '2015-02-02', '234-56-7890', 'MC23456', '555-555-0002', '456 Oak St', 'City B', 'State B', '22222', 'Boys', 'Active', 'Defender', 'CMN00002'),
+('Chris', 'Brown', '2014-03-03', '345-67-8901', 'MC34567', '555-555-0003', '789 Pine St', 'City C', 'State C', '33333', 'Boys', 'Active', 'Midfielder', 'CMN00003'),
+('Danny', 'Williams', '2015-04-04', '456-78-9012', 'MC45678', '555-555-0004', '101 Elm St', 'City D', 'State D', '44444', 'Boys', 'Active', 'Forward', 'CMN00004');
+
+-- Associate club members with different roles in team formations for all roles
+-- ClubMemberID for Alex Johnson
+INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
+VALUES
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '123-45-6789'), '2024-01-10', NULL, 1), -- GoalKeeper
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '123-45-6789'), '2024-01-15', NULL, 2), -- Defender
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '123-45-6789'), '2024-01-20', NULL, 3), -- Midfielder
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '123-45-6789'), '2024-01-25', NULL, 4); -- Forward
+
+-- ClubMemberID for Bobby Smith
+INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
+VALUES
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '234-56-7890'), '2024-01-10', NULL, 1), -- GoalKeeper
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '234-56-7890'), '2024-01-15', NULL, 2), -- Defender
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '234-56-7890'), '2024-01-20', NULL, 3), -- Midfielder
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '234-56-7890'), '2024-01-25', NULL, 4); -- Forward
+
+-- ClubMemberID for Chris Brown
+INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
+VALUES
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '345-67-8901'), '2024-01-10', NULL, 1), -- GoalKeeper
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '345-67-8901'), '2024-01-15', NULL, 2), -- Defender
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '345-67-8901'), '2024-01-20', NULL, 3), -- Midfielder
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '345-67-8901'), '2024-01-25', NULL, 4); -- Forward
+
+-- ClubMemberID for Danny Williams
+INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
+VALUES
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-10', NULL, 1), -- GoalKeeper
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-15', NULL, 2), -- Defender
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-20', NULL, 3), -- Midfielder
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-25', NULL, 4); -- Forward
+
+-- Ensure the `ClubMemberTeams` table has entries for each role for the same club member
+
+-- For club member Alex Johnson (SocialSecurityNumber '123-45-6789')
+INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
+VALUES
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '123-45-6789'), '2024-01-01', NULL, 1), -- GoalKeeper
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '123-45-6789'), '2024-01-01', NULL, 2), -- Defender
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '123-45-6789'), '2024-01-01', NULL, 3), -- Midfielder
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '123-45-6789'), '2024-01-01', NULL, 4); -- Forward
+
+-- Repeat for other members as needed
+-- For club member Bobby Smith (SocialSecurityNumber '234-56-7890')
+INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
+VALUES
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '234-56-7890'), '2024-01-01', NULL, 1), -- GoalKeeper
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '234-56-7890'), '2024-01-01', NULL, 2), -- Defender
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '234-56-7890'), '2024-01-01', NULL, 3), -- Midfielder
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '234-56-7890'), '2024-01-01', NULL, 4); -- Forward
+
+-- For club member Chris Brown (SocialSecurityNumber '345-67-8901')
+INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
+VALUES
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '345-67-8901'), '2024-01-01', NULL, 1), -- GoalKeeper
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '345-67-8901'), '2024-01-01', NULL, 2), -- Defender
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '345-67-8901'), '2024-01-01', NULL, 3), -- Midfielder
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '345-67-8901'), '2024-01-01', NULL, 4); -- Forward
+
+-- For club member Danny Williams (SocialSecurityNumber '456-78-9012')
+INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
+VALUES
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-01', NULL, 1), -- GoalKeeper
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-01', NULL, 2), -- Defender
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-01', NULL, 3), -- Midfielder
+((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-01', NULL, 4); -- Forward
+
+
+-- ---- Insert statements for query 18 ---- --
+-- Insert statements for Personnel table
+INSERT INTO Personnel (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicalCardNumber, TelephoneNumber, Address, City, Province, PostalCode, EmailAddress, Role, Mandate, StartDate, EndDate)
+VALUES
+('Alice', 'Smith', '1980-01-01', '111-11-1111', 'MC11111', '555-555-1111', '123 Elm St', 'City A', 'State A', '11111', 'alice@example.com', 'Trainer', 'Volunteer', '2020-01-01', NULL),
+('Bob', 'Johnson', '1985-02-02', '222-22-2222', 'MC22222', '555-555-2222', '456 Oak St', 'City B', 'State B', '22222', 'bob@example.com', 'Administrator', 'Volunteer', '2019-02-02', NULL),
+('Carol', 'Williams', '1990-03-03', '333-33-3333', 'MC33333', '555-555-3333', '789 Pine St', 'City C', 'State C', '33333', 'carol@example.com', 'GeneralManager', 'Volunteer', '2018-03-03', NULL),
+('Dave', 'Brown', '1975-04-04', '444-44-4444', 'MC44444', '555-555-4444', '123 Maple St', 'City D', 'State D', '44444', 'dave@example.com', 'Trainer', 'Volunteer', '2017-04-04', NULL),
+('Eva', 'Davis', '1988-05-05', '555-55-5555', 'MC55555', '555-555-5555', '456 Birch St', 'City E', 'State E', '55555', 'eva@example.com', 'GeneralManager', 'Volunteer', '2016-05-05', NULL),
+('Frank', 'Miller', '1992-06-06', '666-66-6666', 'MC66666', '555-555-6666', '789 Cedar St', 'City F', 'State F', '66666', 'frank@example.com', 'Administrator', 'Volunteer', '2015-06-06', NULL),
+('Grace', 'Wilson', '1985-07-07', '777-77-7777', 'MC77777', '555-555-7777', '101 Elm St', 'City G', 'State G', '77777', 'grace@example.com', 'Trainer', 'Volunteer', '2014-07-07', NULL);
+
+-- Associate these volunteers with locations in PersonnelLocations table
+INSERT INTO PersonnelLocations (PersonnelID, LocationID, StartDate, EndDate)
+VALUES
+((SELECT PersonnelID FROM Personnel WHERE SocialSecurityNumber = '111-11-1111'), 1, '2020-01-01', NULL),
+((SELECT PersonnelID FROM Personnel WHERE SocialSecurityNumber = '222-22-2222'), 2, '2019-02-02', NULL),
+((SELECT PersonnelID FROM Personnel WHERE SocialSecurityNumber = '333-33-3333'), 3, '2018-03-03', NULL),
+((SELECT PersonnelID FROM Personnel WHERE SocialSecurityNumber = '444-44-4444'), 4, '2017-04-04', NULL),
+((SELECT PersonnelID FROM Personnel WHERE SocialSecurityNumber = '555-55-5555'), 5, '2016-05-05', NULL),
+((SELECT PersonnelID FROM Personnel WHERE SocialSecurityNumber = '666-66-6666'), 6, '2015-06-06', NULL),
+((SELECT PersonnelID FROM Personnel WHERE SocialSecurityNumber = '777-77-7777'), 7, '2014-07-07', NULL);
+
+
