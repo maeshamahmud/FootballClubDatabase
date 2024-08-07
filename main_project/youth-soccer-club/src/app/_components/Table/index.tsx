@@ -116,7 +116,7 @@ export default function Table({
                     const convertedValue =
                       value instanceof Date
                         ? value.toISOString().substring(0, 10)
-                        : value
+                        : value != null
                           ? value.toString()
                           : "";
                     return (
@@ -129,7 +129,7 @@ export default function Table({
                         ) : (
                           <textarea
                             key={resetFormKey}
-                            defaultValue={convertedValue || undefined}
+                            defaultValue={convertedValue ?? undefined}
                             name={isEditing ? key : undefined}
                             readOnly={!isEditing}
                             className="w-full resize-none appearance-none text-nowrap break-all bg-transparent outline-none [-webkit-appearance:none] [field-sizing:content]"
