@@ -8,6 +8,8 @@ import fs from "fs";
 import path from "path";
 import ClientQuery from "./ClientQuery";
 import CRUD from "./CRUD";
+import "./query-syntax-highlighting.css";
+import SQLCode from "./SQLCode";
 
 const directoryPath = "./sql/queries";
 
@@ -48,7 +50,6 @@ export default async function Query({ params }: { params: { id: string } }) {
     return <div>Query not found.</div>;
   }
 
-  // const questionMarkCount = (query.match(/(?<!\\)\?/g) || []).length;
   const fieldNamesToReplace =
     query.match(/\s*(?<fieldName>[\.\w]+)\s*(?=([\=<>]|<>)\s*\?)/gm) || [];
   const questionMarkCount = fieldNamesToReplace.length;
@@ -68,7 +69,7 @@ export default async function Query({ params }: { params: { id: string } }) {
   return (
     <div className="flex flex-col items-center justify-center gap-6">
       <h3 className="text-3xl font-bold text-white">Query {params.id}</h3>
-      <pre className="rounded-lg bg-verdigris/15 p-4 text-white">{query}</pre>
+      <SQLCode query={query} />
       {!result.status ? (
         <ErrorMessage message={result.message} />
       ) : (

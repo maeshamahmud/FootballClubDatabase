@@ -52,9 +52,11 @@ function Navbar() {
         <Link href="/query/16">Query 16</Link>
         <Link href="/query/17">Query 17</Link>
         <Link href="/query/18">Query 18</Link>
-        <form action={sendEmailPeriodic}>
-          <button type="submit">Send Emails</button>
-        </form>
+        <a>
+          <form action={sendEmailPeriodic}>
+            <button type="submit">Send Emails</button>
+          </form>
+        </a>
       </div>
     </nav>
   );

@@ -4,6 +4,7 @@ import { runSingleQuery } from "@/app/_actions/singleQuery";
 import ErrorMessage from "@/app/_components/ErrorMessage";
 import Table from "@/app/_components/Table";
 import { useEffect, useReducer, useRef, useState } from "react";
+import SQLCode from "./SQLCode";
 
 export default function ClientQuery({
   queryId,
@@ -45,7 +46,7 @@ export default function ClientQuery({
   return (
     <div className="flex flex-col items-center justify-center gap-6">
       <h3 className="text-3xl font-bold text-white">Query {queryId}</h3>
-      <pre className="rounded-lg bg-verdigris/15 p-4 text-white">{query}</pre>
+      <SQLCode query={query} />
       {result ? (
         !result.status ? (
           <ErrorMessage message={result.message} />
