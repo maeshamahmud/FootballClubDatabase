@@ -15,25 +15,21 @@ WHERE cm.Status = 'Active'
     AND EXISTS (
         SELECT 1
         FROM ClubMemberTeams cmt2
-        WHERE cmt2.ClubMemberID = cm.ClubMemberID
-        AND cm.Role = 'GoalKeeper'
+        WHERE cmt2.role = 'GoalKeeper'
     )
     AND EXISTS (
         SELECT 1
         FROM ClubMemberTeams cmt3
-        WHERE cmt3.ClubMemberID = cm.ClubMemberID
-        AND cm.Role = 'Defender'
+        WHERE cmt3.Role = 'Defender'
     )
     AND EXISTS (
         SELECT 1
         FROM ClubMemberTeams cmt4
-        WHERE cmt4.ClubMemberID = cm.ClubMemberID
-        AND cm.Role = 'Midfielder'
+        WHERE cmt4.Role = 'Midfielder'
     )
     AND EXISTS (
         SELECT 1
         FROM ClubMemberTeams cmt5
-        WHERE cmt5.ClubMemberID = cm.ClubMemberID
-        AND cm.Role = 'Forward'
+        WHERE cmt5.Role = 'Forward'
     )
 ORDER BY l.Name ASC, cm.ClubMembershipNumber ASC;

@@ -7,8 +7,7 @@ SET Name = 'Main Office',
     TelephoneNumber = '321-654-0987',
     WebAddress = 'www.mainoffice.com',
     Type = 'Head',
-    Capacity = 600,
-    Personnel = 'John Doe Updated'
+    Capacity = 600
 WHERE LocationID = 1;
 
 UPDATE Personnel
@@ -112,3 +111,99 @@ SET Time = '15:00:00',
     Score = 6,
     TeamType = 'Boys'
 WHERE TeamFormationID = 1;
+
+
+-- ---- Update statements for query 14 ---- --
+-- Assign roles to ClubMemberID 35 (Alex Johnson)
+UPDATE ClubMemberTeams
+SET Role = 'GoalKeeper'
+WHERE ClubMemberID = 35 AND TeamID = 1;
+
+UPDATE ClubMemberTeams
+SET Role = 'Defender'
+WHERE ClubMemberID = 35 AND TeamID = 2;
+
+UPDATE ClubMemberTeams
+SET Role = 'Midfielder'
+WHERE ClubMemberID = 35 AND TeamID = 3;
+
+UPDATE ClubMemberTeams
+SET Role = 'Forward'
+WHERE ClubMemberID = 35 AND TeamID = 4;
+
+-- Assign roles to ClubMemberID 23 (Bobby Smith)
+UPDATE ClubMemberTeams
+SET Role = 'GoalKeeper'
+WHERE ClubMemberID = 36 AND TeamID = 1;
+
+UPDATE ClubMemberTeams
+SET Role = 'Defender'
+WHERE ClubMemberID = 36 AND TeamID = 2;
+
+UPDATE ClubMemberTeams
+SET Role = 'Midfielder'
+WHERE ClubMemberID = 36 AND TeamID = 9;
+
+UPDATE ClubMemberTeams
+SET Role = 'Forward'
+WHERE ClubMemberID = 36 AND TeamID = 10;
+
+-- Assign roles to ClubMemberID 37 (Chris Brown)
+UPDATE ClubMemberTeams
+SET Role = 'GoalKeeper'
+WHERE ClubMemberID = 37 AND TeamID = 1;
+
+UPDATE ClubMemberTeams
+SET Role = 'Defender'
+WHERE ClubMemberID = 37 AND TeamID = 2;
+
+UPDATE ClubMemberTeams
+SET Role = 'Midfielder'
+WHERE ClubMemberID = 37 AND TeamID = 3;
+
+UPDATE ClubMemberTeams
+SET Role = 'Forward'
+WHERE ClubMemberID = 37 AND TeamID = 4;
+
+-- Assign roles to ClubMemberID 38 (Danny Williams)
+UPDATE ClubMemberTeams
+SET Role = 'GoalKeeper'
+WHERE ClubMemberID = 38 AND TeamID = 1;
+
+UPDATE ClubMemberTeams
+SET Role = 'Defender'
+WHERE ClubMemberID = 38 AND TeamID = 2;
+
+UPDATE ClubMemberTeams
+SET Role = 'Midfielder'
+WHERE ClubMemberID = 38 AND TeamID = 3;
+
+UPDATE ClubMemberTeams
+SET Role = 'Forward'
+WHERE ClubMemberID = 38 AND TeamID = 4;
+
+-- Assign roles to ClubMemberID 26 (Eve Adams)
+UPDATE ClubMemberTeams
+SET Role = 'GoalKeeper'
+WHERE ClubMemberID = 26 AND TeamID = 13;
+
+-- Assign roles to ClubMemberID 27 (Frank Baker)
+UPDATE ClubMemberTeams
+SET Role = 'GoalKeeper'
+WHERE ClubMemberID = 27 AND TeamID = 13;
+
+
+-- Assign roles to ClubMemberID 28 (Grace Clark)
+UPDATE ClubMemberTeams
+SET Role = 'GoalKeeper'
+WHERE ClubMemberID = 28 AND TeamID = 13;
+
+-- Assign roles to ClubMemberID 29 (Hannah Davis)
+UPDATE ClubMemberTeams
+SET Role = 'GoalKeeper'
+WHERE ClubMemberID = 29 AND TeamID = 14;
+
+UPDATE ClubMembers
+SET FirstName = 'Adam', LastName = 'Johnson'
+WHERE ClubMembershipNumber = 'CMN12346';
+
