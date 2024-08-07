@@ -163,6 +163,9 @@ CREATE TABLE Sessions (
     SessionID INT AUTO_INCREMENT PRIMARY KEY,
     TypeOfSession ENUM('Training', 'Game'),
     LocationID INT,
+    ScheduledDate DATE,
+    HeadCoachPersonnelID INT,
+    FOREIGN KEY (HeadCoachPersonnelID) REFERENCES Personnel(PersonnelID),
     FOREIGN KEY (LocationID) REFERENCES Location(LocationID)
 );
 
@@ -179,7 +182,7 @@ CREATE TABLE TeamFormation (
 DROP TABLE IF EXISTS EmailLogs;
 CREATE TABLE EmailLogs (
     EmailLogID INT AUTO_INCREMENT PRIMARY KEY,
-    Date DATE,
+    Date DATETIME DEFAULT CURRENT_TIMESTAMP,
     LocationIDSender INT,
     EmailReceiver VARCHAR(255),
     EmailSubject VARCHAR(255),

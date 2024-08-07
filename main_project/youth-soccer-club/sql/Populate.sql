@@ -323,28 +323,29 @@ VALUES
 (5, 10, '2023-11-01', NULL);
 
 -- Additional rows for the Sessions table
-INSERT INTO Sessions (TypeOfSession, LocationID)
+INSERT INTO Sessions (TypeOfSession, LocationID, ScheduledDate, HeadCoachPersonnelID)
 VALUES
-('Training', 6),
-('Game', 7),
-('Game', 8),
-('Training', 9),
-('Game', 10),
-('Training', 11),
-('Game', 12),
-('Training', 13),
-('Training', 14),
-('Game', 15),
-('Training', 16),
-('Game', 17),
-('Game', 18),
-('Training', 19),
-('Game', 20),
-('Training', 1),
-('Game', 2),
-('Training', 3),
-('Game', 4),
-('Training', 5);
+('Training', 6, '2024-08-01', 13),
+('Game', 7, '2024-08-02', 13),
+('Game', 8, '2024-08-03', 13),
+('Training', 9, '2024-08-04', 13),
+('Game', 10, '2024-08-05', 13),
+('Training', 11, '2024-08-06', 13),
+('Game', 12, '2024-08-07', 13),
+('Training', 13, '2024-08-08', 13),
+('Training', 14, '2024-08-09', 13),
+('Game', 15, '2024-08-10', 13),
+('Training', 16, '2024-08-11', 13),
+('Game', 17, '2024-08-12', 13),
+('Game', 18, '2024-08-13', 13),
+('Training', 19, '2024-08-14', 13),
+('Game', 20, '2024-08-15', 13),
+('Training', 1, '2024-08-16', 13),
+('Game', 2, '2024-08-17', 13),
+('Training', 3, '2024-08-18', 13),
+('Game', 4, '2024-08-19', 13),
+('Training', 5, '2024-08-20', 13);
+
 
 -- Additional rows for the TeamFormation table
 INSERT INTO TeamFormation (Time, Date, Score, TeamType)
