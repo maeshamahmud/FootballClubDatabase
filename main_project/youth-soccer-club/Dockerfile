@@ -27,7 +27,7 @@ RUN rm node-v20.16.0-linux-x64.tar.xz
 
 COPY --from=builder /app/.next/standalone ./standalone
 COPY --from=builder /app/.next/static ./standalone/.next/static
-COPY --from=builder /app/public ./standalone/public
+# COPY --from=builder /app/public ./standalone/public
 COPY ./sql ./standalone/sql
 COPY ./docker/start.sh ./
 
