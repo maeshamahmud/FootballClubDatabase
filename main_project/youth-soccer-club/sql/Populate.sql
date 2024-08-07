@@ -472,7 +472,6 @@ VALUES
 ((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '111-11-1111'), '2024-03-20', NULL, 10),
 ((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-22-2222'), '2024-03-20', NULL, 10),
 ((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '333-33-3333'), '2024-03-20', NULL, 10),
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '444-44-4444'), '2024-03-20', NULL, 10),
 ((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '111-11-1111'), '2024-01-05', NULL, 11),
 ((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '222-22-2222'), '2024-01-05', NULL, 11),
 ((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '333-33-3333'), '2024-01-05', NULL, 11),
@@ -564,42 +563,6 @@ VALUES
 ((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-15', NULL, 2), -- Defender
 ((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-20', NULL, 3), -- Midfielder
 ((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-25', NULL, 4); -- Forward
-
--- Ensure the `ClubMemberTeams` table has entries for each role for the same club member
-
--- For club member Alex Johnson (SocialSecurityNumber '123-45-6789')
-INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
-VALUES
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '123-45-6789'), '2024-01-01', NULL, 1), -- GoalKeeper
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '123-45-6789'), '2024-01-01', NULL, 2), -- Defender
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '123-45-6789'), '2024-01-01', NULL, 3), -- Midfielder
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '123-45-6789'), '2024-01-01', NULL, 4); -- Forward
-
--- Repeat for other members as needed
--- For club member Bobby Smith (SocialSecurityNumber '234-56-7890')
-INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
-VALUES
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '234-56-7890'), '2024-01-01', NULL, 1), -- GoalKeeper
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '234-56-7890'), '2024-01-01', NULL, 2), -- Defender
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '234-56-7890'), '2024-01-01', NULL, 3), -- Midfielder
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '234-56-7890'), '2024-01-01', NULL, 4); -- Forward
-
--- For club member Chris Brown (SocialSecurityNumber '345-67-8901')
-INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
-VALUES
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '345-67-8901'), '2024-01-01', NULL, 1), -- GoalKeeper
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '345-67-8901'), '2024-01-01', NULL, 2), -- Defender
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '345-67-8901'), '2024-01-01', NULL, 3), -- Midfielder
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '345-67-8901'), '2024-01-01', NULL, 4); -- Forward
-
--- For club member Danny Williams (SocialSecurityNumber '456-78-9012')
-INSERT INTO ClubMemberTeams (ClubMemberID, StartDate, EndDate, TeamID)
-VALUES
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-01', NULL, 1), -- GoalKeeper
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-01', NULL, 2), -- Defender
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-01', NULL, 3), -- Midfielder
-((SELECT ClubMemberID FROM ClubMembers WHERE SocialSecurityNumber = '456-78-9012'), '2024-01-01', NULL, 4); -- Forward
-
 
 -- ---- Insert statements for query 18 ---- --
 -- Insert statements for Personnel table

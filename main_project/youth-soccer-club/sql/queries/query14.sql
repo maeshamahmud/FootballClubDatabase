@@ -1,3 +1,5 @@
+-- ! Edit.sql needs to be run for this to work
+
 SELECT
     cm.ClubMembershipNumber AS club_membership_number,
     cm.FirstName AS first_name,
@@ -32,4 +34,4 @@ WHERE cm.Status = 'Active'
         FROM ClubMemberTeams cmt5
         WHERE cmt5.Role = 'Forward'
     )
-ORDER BY l.Name ASC, cm.ClubMembershipNumber ASC;
+ORDER BY l.Name, cm.ClubMembershipNumber;
