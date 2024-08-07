@@ -1,25 +1,25 @@
-INSERT INTO Location (Name, Address, City, Province, PostalCode, TelephoneNumber, WebAddress, Type, Capacity, Personnel)
+INSERT INTO Location (Name, Address, City, Province, PostalCode, TelephoneNumber, WebAddress, Type, Capacity)
 VALUES
-('Branch E', '203 Pine St', 'River City', 'State', '89012', '123-456-7895', 'www.branchE.com', 'Branch', 300, 'Ella Grey'),
-('Branch F', '304 Cedar St', 'Hill City', 'State', '56789', '123-456-7896', 'www.branchF.com', 'Branch', 350, 'Frank White'),
-('Branch G', '405 Birch St', 'Lake City', 'State', '34567', '123-456-7897', 'www.branchG.com', 'Branch', 250, 'Grace Black'),
-('Branch H', '506 Spruce St', 'Field City', 'State', '23456', '123-456-7898', 'www.branchH.com', 'Branch', 300, 'Hank Green'),
-('Branch I', '607 Willow St', 'Forest City', 'State', '12389', '123-456-7899', 'www.branchI.com', 'Branch', 200, 'Ivy Blue'),
-('Branch J', '708 Fir St', 'Desert City', 'State', '56712', '123-456-7800', 'www.branchJ.com', 'Branch', 400, 'Jack Red'),
-('Branch K', '809 Maple St', 'Mountain City', 'State', '89034', '123-456-7801', 'www.branchK.com', 'Branch', 350, 'Kara Orange'),
-('Branch L', '910 Oak St', 'Valley City', 'State', '34578', '123-456-7802', 'www.branchL.com', 'Branch', 250, 'Liam Yellow'),
-('Branch M', '101 Pine St', 'Canyon City', 'State', '23489', '123-456-7803', 'www.branchM.com', 'Branch', 300, 'Mila Purple'),
-('Branch N', '202 Cedar St', 'Shore City', 'State', '12390', '123-456-7804', 'www.branchN.com', 'Branch', 200, 'Noah Pink'),
-('Branch O', '303 Birch St', 'Bay City', 'State', '56734', '123-456-7805', 'www.branchO.com', 'Branch', 400, 'Olivia Cyan'),
-('Branch P', '404 Spruce St', 'Cape City', 'State', '89045', '123-456-7806', 'www.branchP.com', 'Branch', 350, 'Paul Lime'),
-('Branch Q', '505 Willow St', 'Reef City', 'State', '34589', '123-456-7807', 'www.branchQ.com', 'Branch', 250, 'Quinn Olive'),
-('Branch R', '606 Fir St', 'Harbor City', 'State', '23490', '123-456-7808', 'www.branchR.com', 'Branch', 300, 'Ruby Mint'),
-('Branch S', '707 Maple St', 'Dune City', 'State', '12391', '123-456-7809', 'www.branchS.com', 'Branch', 200, 'Sam Peach'),
-('Branch T', '808 Oak St', 'Grove City', 'State', '56756', '123-456-7810', 'www.branchT.com', 'Branch', 400, 'Tina Teal'),
-('Branch U', '909 Pine St', 'Riverbank City', 'State', '89067', '123-456-7811', 'www.branchU.com', 'Branch', 350, 'Uma Coral'),
-('Branch V', '101 Cedar St', 'Hilltop City', 'State', '34512', '123-456-7812', 'www.branchV.com', 'Branch', 250, 'Vince Violet'),
-('Branch W', '202 Birch St', 'Lakeside City', 'State', '23467', '123-456-7813', 'www.branchW.com', 'Branch', 300, 'Wendy Maroon'),
-('Branch X', '303 Spruce St', 'Woodland City', 'State', '12378', '123-456-7814', 'www.branchX.com', 'Branch', 200, 'Xander Brown');
+('Branch E', '203 Pine St', 'River City', 'State', '89012', '123-456-7895', 'www.branchE.com', 'Branch', 300),
+('Branch F', '304 Cedar St', 'Hill City', 'State', '56789', '123-456-7896', 'www.branchF.com', 'Branch', 350),
+('Branch G', '405 Birch St', 'Lake City', 'State', '34567', '123-456-7897', 'www.branchG.com', 'Branch', 250),
+('Branch H', '506 Spruce St', 'Field City', 'State', '23456', '123-456-7898', 'www.branchH.com', 'Branch', 300),
+('Branch I', '607 Willow St', 'Forest City', 'State', '12389', '123-456-7899', 'www.branchI.com', 'Branch', 200),
+('Branch J', '708 Fir St', 'Desert City', 'State', '56712', '123-456-7800', 'www.branchJ.com', 'Branch', 400),
+('Branch K', '809 Maple St', 'Mountain City', 'State', '89034', '123-456-7801', 'www.branchK.com', 'Branch', 350),
+('Branch L', '910 Oak St', 'Valley City', 'State', '34578', '123-456-7802', 'www.branchL.com', 'Branch', 250),
+('Branch M', '101 Pine St', 'Canyon City', 'State', '23489', '123-456-7803', 'www.branchM.com', 'Branch', 300),
+('Branch N', '202 Cedar St', 'Shore City', 'State', '12390', '123-456-7804', 'www.branchN.com', 'Branch', 200),
+('Branch O', '303 Birch St', 'Bay City', 'State', '56734', '123-456-7805', 'www.branchO.com', 'Branch', 400),
+('Branch P', '404 Spruce St', 'Cape City', 'State', '89045', '123-456-7806', 'www.branchP.com', 'Branch', 350),
+('Branch Q', '505 Willow St', 'Reef City', 'State', '34589', '123-456-7807', 'www.branchQ.com', 'Branch', 250),
+('Branch R', '606 Fir St', 'Harbor City', 'State', '23490', '123-456-7808', 'www.branchR.com', 'Branch', 300),
+('Branch S', '707 Maple St', 'Dune City', 'State', '12391', '123-456-7809', 'www.branchS.com', 'Branch', 200),
+('Branch T', '808 Oak St', 'Grove City', 'State', '56756', '123-456-7810', 'www.branchT.com', 'Branch', 400),
+('Branch U', '909 Pine St', 'Riverbank City', 'State', '89067', '123-456-7811', 'www.branchU.com', 'Branch', 350),
+('Branch V', '101 Cedar St', 'Hilltop City', 'State', '34512', '123-456-7812', 'www.branchV.com', 'Branch', 250),
+('Branch W', '202 Birch St', 'Lakeside City', 'State', '23467', '123-456-7813', 'www.branchW.com', 'Branch', 300),
+('Branch X', '303 Spruce St', 'Woodland City', 'State', '12378', '123-456-7814', 'www.branchX.com', 'Branch', 200);
 
 -- Additional rows for the Personnel table
 INSERT INTO Personnel (FirstName, LastName, DateOfBirth, SocialSecurityNumber, MedicalCardNumber, TelephoneNumber, Address, City, Province, PostalCode, EmailAddress, Role, Mandate, StartDate, EndDate)

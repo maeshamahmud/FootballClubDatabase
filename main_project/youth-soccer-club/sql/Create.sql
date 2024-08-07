@@ -13,8 +13,7 @@ CREATE TABLE Location (
     TelephoneNumber VARCHAR(20),
     WebAddress VARCHAR(255),
     Type ENUM('Head', 'Branch'),
-    Capacity INT,
-    Personnel VARCHAR(255)
+    Capacity INT
 );
 
 DROP TABLE IF EXISTS Personnel;

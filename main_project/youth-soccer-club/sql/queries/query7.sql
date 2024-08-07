@@ -1,4 +1,4 @@
-SELECT
+SELECT DISTINCT
     l.Name AS LocationName,
     l.Address,
     l.City,
@@ -8,14 +8,14 @@ SELECT
     l.WebAddress,
     l.Type,
     l.Capacity,
-    p.FirstName || ' ' || p.LastName AS GeneralManager,
+    CONCAT(p.FirstName, ' ', p.LastName) AS GeneralManager,
     (SELECT COUNT(*)
      FROM ClubMemberLocations cml
      WHERE cml.LocationID = l.LocationID) AS NumberOfClubMembers
 FROM
     Location l
-LEFT JOIN
-    Personnel p ON l.Personnel = p.PersonnelID
+     JOIN PersonnelLocations pl on l.LocationID = pl.LocationID
+     JOIN Personnel p on pl.PersonnelID = p.PersonnelID
 ORDER BY
-    l.Province ASC,
-    l.City ASC;
+    l.Province,
+    l.City;
