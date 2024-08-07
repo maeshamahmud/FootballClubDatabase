@@ -5,8 +5,8 @@ let connection: mysql2.Connection | null = null;
 let connectionPromise: Promise<mysql2.Connection | null> | null = null;
 
 export async function getDb() {
-  let maxTries = 5;
-  while (!connection) {
+  let maxTries = 30;
+  while (true) {
     connectionPromise ??= mysql2
       .createConnection({
         ...sqlConfig.connection,
@@ -33,6 +33,8 @@ export async function getDb() {
 
     if (!connection) {
       await new Promise((resolve) => setTimeout(resolve, 3000));
+    } else {
+      break;
     }
   }
   return connection;
