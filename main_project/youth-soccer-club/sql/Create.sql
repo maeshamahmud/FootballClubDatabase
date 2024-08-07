@@ -1,6 +1,8 @@
-DROP DATABASE IF EXISTS test_db;
-CREATE DATABASE test_db;
-USE test_db;
+# DROP DATABASE IF EXISTS test_db;
+# CREATE DATABASE test_db;
+# USE test_db;
+
+SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS Location;
 CREATE TABLE Location (
@@ -188,3 +190,5 @@ CREATE TABLE EmailLogs (
     EmailSubject VARCHAR(255),
     EmailBody VARCHAR(255)
 );
+
+SET FOREIGN_KEY_CHECKS = 1;
