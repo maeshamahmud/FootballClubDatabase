@@ -26,5 +26,5 @@ docker build -t youth-soccer-club .
 Then, run the container:
 
 ```bash
-docker run -t -p 3000:3000 youth-soccer-club
+docker run -it --rm -p 3000:3000 youth-soccer-club
 ```

@@ -17,7 +17,7 @@ export async function getDb() {
         return connection;
       })
       .catch((err) => {
-        console.error(err);
+        console.error("Error connecting to database:", err.code);
         return null;
       })
       .finally(() => {
