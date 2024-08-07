@@ -1,13 +1,15 @@
-import { seed } from "@/app/_util/seed";
-import { sendEmailPeriodic } from "@/app/_util/sendEmail";
-import cron from "node-cron";
-
 export async function register() {
-  console.log("Instrumentation registered", process.env.SEED);
+  if (process.env.NEXT_RUNTIME === "nodejs") {
+    console.log("Instrumentation register...");
 
-  if (process.env.SEED === "true") {
-    await seed();
+    if (process.env.SEED === "true") {
+      console.log("Seeding database...");
+      const { seed } = await import("@/app/_util/seed");
+      await seed();
+    }
+
+    const { sendEmailPeriodic } = await import("@/app/_util/sendEmail");
+    const cron = await import("node-cron");
+    cron.schedule("0 12 * * 0", sendEmailPeriodic);
   }
-
-  cron.schedule("0 12 * * 0", sendEmailPeriodic);
 }
