@@ -5,7 +5,7 @@ import { deleteTables } from "@/app/_actions/query1-6/delete";
 import { getTables } from "@/app/_actions/query1-6/display";
 import { editTables } from "@/app/_actions/query1-6/edit";
 import ErrorMessage from "@/app/_components/ErrorMessage";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import DisplayTables from "./DisplayTables";
 
 type TableData = Awaited<ReturnType<typeof getTables>>;
@@ -15,6 +15,7 @@ export default function CRUD({
 }: {
   initialTableData: TableData | null;
 }) {
+  const [key, rerender] = useReducer((x) => x + 1, 0);
   const [tableData, setTableData] = useState(initialTableData);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -25,6 +26,7 @@ export default function CRUD({
     const data = await getTables();
     setIsLoading(false);
     setTableData(data);
+    rerender();
   };
 
   useEffect(() => {
@@ -39,7 +41,7 @@ export default function CRUD({
           onClick={async () => {
             setIsLoading(true);
             const { status, message } = await createTables();
-            setIsLoading(false);
+
             if (!status) {
               setErrorMessage(message);
             } else {
@@ -54,7 +56,7 @@ export default function CRUD({
           onClick={async () => {
             setIsLoading(true);
             const { status, message } = await editTables();
-            setIsLoading(false);
+
             if (!status) {
               setErrorMessage(message);
             } else {
@@ -69,7 +71,7 @@ export default function CRUD({
           onClick={async () => {
             setIsLoading(true);
             const { status, message } = await deleteTables();
-            setIsLoading(false);
+
             if (!status) {
               setErrorMessage(message);
             } else {
@@ -80,14 +82,7 @@ export default function CRUD({
         >
           Delete
         </button>
-        <button
-          onClick={() => {
-            setTableData(null);
-            setTimeout(displayTables, 500);
-          }}
-        >
-          Display
-        </button>
+        <button onClick={displayTables}>Display</button>
         {isLoading && (
           <div className="absolute bottom-0 left-full top-0 flex items-center justify-center pl-4">
             <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-t-2 border-verdigris/75" />
@@ -100,7 +95,7 @@ export default function CRUD({
           onClose={() => setErrorMessage(null)}
         />
       )}
-      {tableData && <DisplayTables tableData={tableData} />}
+      {tableData && <DisplayTables key={key} tableData={tableData} />}
     </div>
   );
 }
