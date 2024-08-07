@@ -199,6 +199,7 @@ export default function Table({
 
                                 resetForm();
                                 setRowIsEditingIdx(null);
+                                setRowIsDeletingIdx(null);
                               }}
                             >
                               Cancel
