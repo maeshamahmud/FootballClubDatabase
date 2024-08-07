@@ -1,5 +1,5 @@
 import { readFileSync } from "fs";
-import { getDb } from "./db";
+import { closeDb, getDb } from "./db";
 
 export async function seed() {
   const db = await getDb();
@@ -23,4 +23,6 @@ export async function seed() {
   `);
 
   console.log("Seeding complete!");
+
+  await closeDb();
 }
