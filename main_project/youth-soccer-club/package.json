@@ -1,6 +1,7 @@
 {
   "name": "youth-soccer-club",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,13 +9,15 @@
     "start": "HOSTNAME=0.0.0.0 node ./standalone/server.js",
     "lint": "tsc --noEmit && next lint",
     "format": "prettier --write --ignore-unknown .",
-    "seed": "bun -e \"require('./src/app/_util/seed.ts').seed().then(() => process.exit(0))\"",
+    "seed": "bun -e 'require(`./src/app/_util/seed.ts`).seed().then(() => process.exit(0))'",
     "gen_db_types": "bun x @rmp135/sql-ts -c ./mysql.json"
   },
   "dependencies": {
     "@rmp135/sql-ts": "^2.1.0",
+    "chokidar": "^3.6.0",
     "mysql2": "^3.11.0",
     "next": "14.2.5",
+    "node-cron": "^3.0.3",
     "prettier": "^3.3.3",
     "prettier-plugin-organize-imports": "^4.0.0",
     "prettier-plugin-tailwindcss": "^0.6.5",
@@ -24,7 +27,9 @@
     "sql-template-tag": "^5.2.1"
   },
   "devDependencies": {
+    "@types/bun": "^1.1.6",
     "@types/node": "^20",
+    "@types/node-cron": "^3.0.11",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8",
