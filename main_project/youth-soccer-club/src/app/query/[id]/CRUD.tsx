@@ -17,10 +17,13 @@ export default function CRUD({
 }) {
   const [tableData, setTableData] = useState(initialTableData);
 
+  const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const displayTables = async () => {
+    setIsLoading(true);
     const data = await getTables();
+    setIsLoading(false);
     setTableData(data);
   };
 
@@ -31,10 +34,12 @@ export default function CRUD({
   return (
     <div className="flex flex-col items-center gap-4">
       CRUD
-      <div className="flex items-center gap-4 [&>button:hover]:bg-verdigris/70 [&>button]:h-12 [&>button]:w-16 [&>button]:rounded-lg [&>button]:bg-verdigris/50 [&>button]:text-white">
+      <div className="relative flex items-center gap-4 [&>button:hover]:bg-verdigris/70 [&>button]:h-12 [&>button]:w-16 [&>button]:rounded-lg [&>button]:bg-verdigris/50 [&>button]:text-white [&>button]:transition-all">
         <button
           onClick={async () => {
+            setIsLoading(true);
             const { status, message } = await createTables();
+            setIsLoading(false);
             if (!status) {
               setErrorMessage(message);
             } else {
@@ -47,7 +52,9 @@ export default function CRUD({
         </button>
         <button
           onClick={async () => {
+            setIsLoading(true);
             const { status, message } = await editTables();
+            setIsLoading(false);
             if (!status) {
               setErrorMessage(message);
             } else {
@@ -60,7 +67,9 @@ export default function CRUD({
         </button>
         <button
           onClick={async () => {
+            setIsLoading(true);
             const { status, message } = await deleteTables();
+            setIsLoading(false);
             if (!status) {
               setErrorMessage(message);
             } else {
@@ -79,6 +88,11 @@ export default function CRUD({
         >
           Display
         </button>
+        {isLoading && (
+          <div className="absolute bottom-0 left-full top-0 flex items-center justify-center pl-4">
+            <div className="h-8 w-8 animate-spin rounded-full border-b-2 border-t-2 border-verdigris/75" />
+          </div>
+        )}
       </div>
       {errorMessage && (
         <ErrorMessage
