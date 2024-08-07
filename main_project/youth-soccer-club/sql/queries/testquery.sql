@@ -1,11 +1,13 @@
 SELECT
+    cmt.TeamID,
     cm.ClubMemberID,
     cm.ClubMembershipNumber AS club_membership_number,
     cm.FirstName AS first_name,
     cm.LastName AS last_name,
-    COUNT(DISTINCT cml.LocationID) AS location_count
+    cm.Role as standard_role,
+    cmt.Role as team_role
 FROM ClubMembers cm
-JOIN ClubMemberLocations cml ON cm.ClubMemberID = cml.ClubMemberID
-WHERE cm.Status = 'Active'
-GROUP BY cm.ClubMembershipNumber, cm.FirstName, cm.LastName
-ORDER BY location_count DESC;
+JOIN ClubMemberTeams cmt ON cm.ClubMemberID = cmt.ClubMemberID
+WHERE cm.Status = 'Active' AND cmt.Role IS NOT NULL
+ORDER BY cmt.TeamID, cm.FirstName;
+

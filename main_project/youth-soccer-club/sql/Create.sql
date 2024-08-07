@@ -142,6 +142,8 @@ CREATE TABLE ClubMemberTeams (
     StartDate DATE,
     EndDate DATE,
     TeamID INT,
+    Role ENUM('GoalKeeper','Defender','Midfielder','Forward'),
+    PRIMARY KEY(TeamID,ClubMemberID),
     FOREIGN KEY (ClubMemberID) REFERENCES ClubMembers(ClubMemberID),
     FOREIGN KEY (TeamID) REFERENCES Teams(TeamID)
 );
